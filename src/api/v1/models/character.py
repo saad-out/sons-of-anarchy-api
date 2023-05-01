@@ -1,5 +1,5 @@
-from src.api.v1.utils.database import db
-from src.api.v1.models.base_model import BaseModel
+from api.v1.utils.database import db
+from api.v1.models.base_model import BaseModel
 
 from sqlalchemy.ext.mutable import MutableList
 

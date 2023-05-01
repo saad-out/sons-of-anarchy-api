@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_migrate import Migrate
-from src.api.v1.models import *
-from src.api.v1.utils.database import db
-from src.api.v1.utils.config import Config
+from api.v1.models import *
+from api.v1.utils.database import db
+from api.v1.utils.config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)

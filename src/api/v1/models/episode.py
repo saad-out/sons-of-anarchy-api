@@ -9,8 +9,8 @@ Atrributes:
 	synopsis: Episode's summary, str(Text)
 	airDate: Episode's air date, datetime
 """
-from src.api.v1.utils.database import db
-from src.api.v1.models.base_model import BaseModel
+from api.v1.utils.database import db
+from api.v1.models.base_model import BaseModel
 
 
 class Episode(BaseModel, db.Model):

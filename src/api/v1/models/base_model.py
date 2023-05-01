@@ -1,4 +1,4 @@
-from src.api.v1.utils.database import db
+from api.v1.utils.database import db
 
 import uuid
 
