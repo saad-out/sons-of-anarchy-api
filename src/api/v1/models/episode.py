@@ -1,14 +1,3 @@
-"""
-Episode:
-*******
-Atrributes:
-	id: Episode ID, int
-	season: Episode's number, str (S01, etc...)
-	episodeNumber: Number of episode in Season, int
-	title: Episode's title, str
-	synopsis: Episode's summary, str(Text)
-	airDate: Episode's air date, datetime
-"""
 from api.v1.utils.database import db
 from api.v1.models.base_model import BaseModel
 

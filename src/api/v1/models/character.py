@@ -5,20 +5,6 @@ from sqlalchemy.ext.mutable import MutableList
 
 
 class Character(BaseModel, db.Model):
-    """
-    	id: Character ID, int
-	firstName: Character's first name, str
-	middleName: Character's middle name (optional), str
-	lastName: Character's last name, str
-	fullName: Character's full name, str
-	age: Character's age, int
-	gender: Character's gender, enum(str)
-	club: Character's club, str
-	occupation: Character's occupation (job), str
-	titles: Character's titles, list of strs
-	aliases: Character's nicknames, list of strs
-	playedBy: Actor(s) who played the role, list of strss
-    """
     __tablename__ = 'characters'
 
     id = db.Column(db.Integer, primary_key=True)

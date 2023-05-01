@@ -3,12 +3,6 @@ from api.v1.utils.database import db
 import uuid
 
 class BaseModel(db.Model):
-    """
-    Attributes:
-	recordId: Internal unique record ID, str
-	createdAt: Record creation time, datetime
-	updatedAT: Record update time, datetime
-    """
     __abstract__ = True
 
     recordId = db.Column(db.String(36), primary_key=True)

@@ -1,15 +1,3 @@
-"""
-Season:
-******
-Attributes:
-	id: Season ID, int
-	seasonOrder: The season number, str
-	title: Season's title, str
-	premierDate: Air date, datetime
-	endDate: Finale date, datetime
-	synopsis: Season summary, str(Text)
-	episodes: Season episodes, list 
-"""
 from api.v1.utils.database import db
 from api.v1.models.base_model import BaseModel
 
