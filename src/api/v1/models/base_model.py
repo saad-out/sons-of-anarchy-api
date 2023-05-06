@@ -12,5 +12,9 @@ class BaseModel(db.Model):
     def __init__(self, *args, **kwargs):
         self.recordId = str(uuid.uuid4())
         if kwargs:
-            for k, v in kwargs.items():
-                setattr(self, k, v)
+            for key, value in kwargs.items():
+                if key != 'recordId':
+                    setattr(self, key, value)
+
+    def __repr__(self):
+        return '<{} {}>'.format(self.__class__.__name__, self.recordId)
