@@ -7,7 +7,7 @@ from sqlalchemy.ext.mutable import MutableList
 class Character(BaseModel, db.Model):
     __tablename__ = 'characters'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     firstName = db.Column(db.String(64), nullable=False)
     middleName = db.Column(db.String(64))
     lastName = db.Column(db.String(64), nullable=False)
@@ -20,3 +20,5 @@ class Character(BaseModel, db.Model):
     aliases = MutableList.as_mutable(db.ARRAY(db.String(64)))
     playedBy = MutableList.as_mutable(db.ARRAY(db.String(64)))
     
+    def __repr__(self):
+        return f'{self.fullName} ({self.age}) - {self.club}'
