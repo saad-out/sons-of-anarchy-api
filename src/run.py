@@ -1,26 +1,44 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_migrate import Migrate
 from api.v1.models import *
 from api.v1.utils.database import db
 from api.v1.utils.config import Config
 
-app = Flask(__name__)
+app: Flask = Flask(__name__)
 app.config.from_object(Config)
 db.init_app(app)
-migrate = Migrate(app, db)
+migrate: Migrate = Migrate(app, db)
 
 
 @app.route('/')
-def index():
+def index() -> str:
     return 'Hello, World!'
 
 @app.route('/characters')
-def characters():
-    chars = db.session.query(Character).all()
+def characters() -> str:
+    chars: list[Character] = db.session.query(Character).all()
     if chars:
         return chars[0].fullName
     else:
         return 'No characters found.'
+    
+@app.route('/seasons')
+def seasons() -> str:
+    seasons: list[Season] = db.session.query(Season).all()
+    if seasons:
+        return seasons[0].title
+    else:
+        return 'No seasons found.'
+    
+
+@app.route('/episodes')
+def episodes() -> str:
+    episodes: list[Episode] = db.session.query(Episode).all()
+    if episodes:
+        return episodes[0].title
+    else:
+        return 'No episodes found.'
+
 
 if __name__ == '__main__':
     app.run(debug=True)
