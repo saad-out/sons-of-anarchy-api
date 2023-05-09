@@ -50,15 +50,27 @@ class BaseModel(db.Model):
     __abstract__ = True
 
     recordId: Mapped[str] = db.Column(db.String(36), primary_key=True)
-    createdAt: Mapped[datetime] = db.Column(db.DateTime, default=db.func.now(), nullable=False)
-    updatedAt: Mapped[datetime] = db.Column(db.DateTime, default=db.func.now(), nullable=False)
+    createdAt: Mapped[datetime] = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    updatedAt: Mapped[datetime] = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
     def __init__(self, *args: tuple, **kwargs: dict):
-        self.recordId = str(uuid.uuid4())
+        """
+        Constructor method that sets the record ID and optional keyword arguments.
+
+        Args:
+            *args (tuple): Variable length argument list.
+            **kwargs (dict): Arbitrary keyword arguments.
+        """
         if kwargs:
             for key, value in kwargs.items():
-                if key != 'recordId':
-                    setattr(self, key, value)
+                setattr(self, key, value)
+            if 'recordId' not in self.__dict__:
+                self.recordId = str(uuid.uuid4())
+        else:
+            self.recordId = str(uuid.uuid4())
+            self.createdAt = datetime.utcnow()
+            self.updatedAt = self.createdAt
+        
 
     def __repr__(self):
         return '<{} {}>'.format(self.__class__.__name__, self.recordId)
