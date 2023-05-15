@@ -1,3 +1,4 @@
+
 from flask import Flask, jsonify
 from flask_migrate import Migrate
 from api.v1.models import *
@@ -12,7 +13,7 @@ migrate: Migrate = Migrate(app, db)
 
 @app.route('/')
 def index() -> str:
-    return 'Hello, World!'
+    return 'Hello, World! and Welcome to the API version 1 !'
 
 @app.route('/characters')
 def characters() -> str:
