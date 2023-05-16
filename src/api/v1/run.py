@@ -1,19 +1,23 @@
-
 from flask import Flask, jsonify
 from flask_migrate import Migrate
+
 from api.v1.models import *
+from api.v1.routes import app_routes
 from api.v1.utils.database import db
 from api.v1.utils.config import Config
 
 app: Flask = Flask(__name__)
+app.url_map.strict_slashes = False
 app.config.from_object(Config)
 db.init_app(app)
 migrate: Migrate = Migrate(app, db)
 
+app.register_blueprint(app_routes)
+
 
 @app.route('/')
 def index() -> str:
-    return 'Hello, World! and Welcome to the API version 1 !'
+    return 'Hello, World! and Welcome to the Sons Of Anarchy API version 1 !'
 
 @app.route('/characters')
 def characters() -> str:
