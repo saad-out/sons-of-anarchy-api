@@ -2,3 +2,6 @@ __pycache__/
 .env
 myvenv/
 .flaskenv
+test.py
+.run-backup.py
+.gitignore
