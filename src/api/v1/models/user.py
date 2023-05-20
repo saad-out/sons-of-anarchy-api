@@ -52,7 +52,7 @@ class User(BaseModel, db.Model):
     firstName: Mapped[str] = db.Column(db.String(64), nullable=False)
     lastName: Mapped[str] = db.Column(db.String(64), nullable=False)
     email: Mapped[str] = db.Column(db.String(64), nullable=False, unique=True)
-    password: Mapped[str] = db.Column(db.String(64), nullable=False)
+    password: Mapped[str] = db.Column(db.String(128), nullable=False)
 
     def __repr__(self):
         return f'{self.firstName} {self.lastName} ({self.email})'
