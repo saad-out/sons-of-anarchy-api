@@ -12,6 +12,7 @@ Jinja2==3.1.2
 Mako==1.2.4
 MarkupSafe==2.1.2
 pycparser==2.21
+PyJWT==2.7.0
 PyMySQL==1.0.3
 python-dotenv==1.0.0
 SQLAlchemy==2.0.10
