@@ -66,7 +66,7 @@ class Character(BaseModel, db.Model):
     middleName: Mapped[str] = db.Column(db.String(64))
     lastName: Mapped[str] = db.Column(db.String(64), nullable=False)
     fullName: Mapped[str] = db.Column(db.String(128), nullable=False)
-    age: Mapped[int] = db.Column(db.Integer, nullable=False)
+    age: Mapped[int] = db.Column(db.Integer)
     gender: Mapped[str] = db.Column(db.String(16), nullable=False)
     club: Mapped[str] = db.Column(db.String(64), nullable=False)
     occupation: Mapped[str] = db.Column(db.String(64), nullable=False)

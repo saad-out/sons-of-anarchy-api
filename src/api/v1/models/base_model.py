@@ -64,8 +64,12 @@ class BaseModel(db.Model):
         if kwargs:
             for key, value in kwargs.items():
                 setattr(self, key, value)
-            if 'recordId' not in self.__dict__:
+            if 'recordId' not in kwargs:
                 self.recordId = str(uuid.uuid4())
+            if 'createdAt' not in kwargs:
+                self.createdAt = datetime.utcnow()
+            if 'updatedAt' not in kwargs:
+                self.updatedAt = self.createdAt 
         else:
             self.recordId = str(uuid.uuid4())
             self.createdAt = datetime.utcnow()
