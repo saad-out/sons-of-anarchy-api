@@ -1,7 +1,8 @@
-from flask import jsonify, Response
+from flask import jsonify, Response, request
 from typing import Optional
 
 from api.v1.routes import app_routes
+from api.v1.utils.token import token_required
 
 
 @app_routes.route('/seasons', methods=['GET'])
@@ -13,3 +14,18 @@ def get_seasons(season_id: Optional[int] = None) -> Response:
         return jsonify({'message': f'Get season {season_id}'})
     else:
         return jsonify({'message': 'Get all seasons'})
+
+
+@app_routes.route('/seasons', methods=['POST'])
+@app_routes.route('/seasons/<int:season_id>', methods=['PUT', 'DELETE'])
+@token_required
+def post_seasons(season_id: Optional[int] = None) -> Response:
+    """
+    """
+    if season_id:
+        if request.method == 'PUT':
+            return jsonify({'message': f'Update season {season_id}'})
+        else:
+            return jsonify({'message': f'Delete season {season_id}'})
+    else:
+        return jsonify({'message': 'Create season'})
