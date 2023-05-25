@@ -76,3 +76,22 @@ class Character(BaseModel, db.Model):
 
     def __repr__(self):
         return f'{self.fullName} ({self.age}) - {self.club}'
+    
+    def to_dict(self):
+        """
+        Return a dictionary representation of the character instance.
+        """
+        return {
+            'id': self.id,
+            'firstName': self.firstName,
+            'middleName': self.middleName,
+            'lastName': self.lastName,
+            'fullName': self.fullName,
+            'age': self.age,
+            'gender': self.gender,
+            'club': self.club,
+            'occupation': self.occupation,
+            'titles': self.titles,
+            'aliases': self.aliases,
+            'playedBy': self.playedBy,
+        }

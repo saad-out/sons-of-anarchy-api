@@ -1,4 +1,10 @@
-from flask import Flask, jsonify
+from flask import (
+    Flask,
+    jsonify,
+    make_response,
+    Response,
+)
+
 from flask_migrate import Migrate
 
 from api.v1.models import *
@@ -43,6 +49,11 @@ def episodes() -> str:
         return episodes[0].title
     else:
         return 'No episodes found.'
+
+
+@app.errorhandler(404)
+def not_found(error) -> Response:
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 
 if __name__ == '__main__':
