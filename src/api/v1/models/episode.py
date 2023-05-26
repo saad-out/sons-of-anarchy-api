@@ -54,3 +54,20 @@ class Episode(BaseModel, db.Model):
 
     def __repr__(self):
         return f'Episode {self.episodeNumber} from season {self.seasonNumber}'
+
+    def to_dict(self):
+        """
+        Returns a dictionary representation of the episode instance.
+
+        Returns:
+            dict: A dictionary containing the episode's attributes.
+        """
+        return {
+            'id': self.id,
+            'seasonNumber': self.seasonNumber,
+            'episodeNumber': self.episodeNumber,
+            'title': self.title,
+            'synopsis': self.synopsis,
+            'airDate': self.airDate,
+            'season': "localhost:5000/api/v1/seasons/{}".format(self.season.id)
+        }
