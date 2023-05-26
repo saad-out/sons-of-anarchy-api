@@ -3,6 +3,10 @@ from typing import Optional
 
 from api.v1.routes import app_routes
 from api.v1.utils.token import token_required
+from api.v1.controllers.seasons import (
+    get_season_by_id,
+    get_all_seasons
+)
 
 
 @app_routes.route('/seasons', methods=['GET'])
@@ -11,9 +15,9 @@ def get_seasons(season_id: Optional[int] = None) -> Response:
     """
     """
     if season_id:
-        return jsonify({'message': f'Get season {season_id}'})
+        return get_season_by_id(season_id)
     else:
-        return jsonify({'message': 'Get all seasons'})
+        return get_all_seasons()
 
 
 @app_routes.route('/seasons', methods=['POST'])

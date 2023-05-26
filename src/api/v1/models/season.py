@@ -63,3 +63,14 @@ class Season(BaseModel, db.Model):
 
     def __repr__(self):
         return f'Season {self.seasonOrder}: {self.title}'
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'seasonOrder': self.seasonOrder,
+            'title': self.title,
+            'premierDate': self.premierDate,
+            'endDate': self.endDate,
+            'synopsis': self.synopsis,
+            #'episodes': [episode.to_dict() for episode in self.episodes]
+        }
