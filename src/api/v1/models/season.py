@@ -72,5 +72,6 @@ class Season(BaseModel, db.Model):
             'premierDate': self.premierDate,
             'endDate': self.endDate,
             'synopsis': self.synopsis,
-            #'episodes': [episode.to_dict() for episode in self.episodes]
+            'episodes': ["localhost:5000/api/v1/episodes/{}".format(episode.id)
+                         for episode in self.episodes]
         }
