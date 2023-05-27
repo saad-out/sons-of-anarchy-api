@@ -68,6 +68,6 @@ class Episode(BaseModel, db.Model):
             'episodeNumber': self.episodeNumber,
             'title': self.title,
             'synopsis': self.synopsis,
-            'airDate': self.airDate,
+            'airDate': self.airDate.strftime("%Y-%m-%d"),
             'season': "localhost:5000/api/v1/seasons/{}".format(self.season.id)
         }

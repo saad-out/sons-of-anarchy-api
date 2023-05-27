@@ -9,7 +9,9 @@ from api.v1.controllers.episodes import (
     get_episode_for_season_by_id,
     get_episodes_for_season,
     create_episode,
-    create_episode_for_season
+    create_episode_for_season,
+    update_episode,
+    delete_episode
 )
 
 
@@ -43,9 +45,9 @@ def post_episodes(episode_id: Optional[int] = None) -> Response:
     """
     if episode_id:
         if request.method == 'PUT':
-            return jsonify({'message': f'Update episode {episode_id}'})
+            return update_episode(episode_id)
         else:
-            return jsonify({'message': f'Delete episode {episode_id}'})
+            return delete_episode(episode_id) 
     else:
         return create_episode()
 
@@ -58,8 +60,8 @@ def post_season_episodes(season_id: int, episode_id: Optional[int] = None) -> Re
     """
     if episode_id:
         if request.method == 'PUT':
-            return jsonify({'message': f'Update season {season_id} episode {episode_id}'})
+            return update_episode(episode_id, season_id)
         else:
-            return jsonify({'message': f'Delete season {season_id} episode {episode_id}'})
+            return delete_episode(episode_id, season_id)
     else:
         return create_episode_for_season(season_id)

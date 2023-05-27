@@ -10,6 +10,7 @@ from typing import (
     List,
     Dict
 )
+from datetime import datetime
 from sqlalchemy.exc import IntegrityError
 
 
@@ -104,7 +105,7 @@ def create_episode() -> Response:
         db.session.commit()
         return make_response(jsonify(episode.to_dict()), 201)
     except IntegrityError:
-        return make_response(jsonify({"message": "seasonNumber is not valid"}), 400)
+        return make_response(jsonify({"message": "Invalid data"}), 400)
     except Exception:
         return make_response(jsonify({"message": "Error occured!"}), 400)
 
@@ -135,5 +136,76 @@ def create_episode_for_season(id: int) -> Response:
         db.session.add(episode)
         db.session.commit()
         return make_response(jsonify(episode.to_dict()), 201)
+    except Exception:
+        return make_response(jsonify({"message": "Error occured!"}), 400)
+
+
+def update_episode(episode_id: int, season_id: Optional[int] = None) -> Response:
+    """
+    """
+    season: Optional[Season] = None
+    if season_id:
+        try:
+            assert type(season_id) == int and season_id > 0
+        except AssertionError:
+            abort(404)
+        season = Season.query.filter_by(id=season_id).first()
+        if not season:
+            abort(404)
+        
+    if not request.is_json:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+    try:
+        data: Dict = request.get_json()
+    except Exception:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+
+    episode: Episode = Episode.query.filter_by(id=episode_id).first()
+    if (not episode) or (season and episode not in season.episodes):
+        abort(404)
+    for key, value in data.items():
+        if key in ["id", "createdAt", "updatedAt"]:
+            continue
+        if key == "airDate":
+            try:
+                value = datetime.strptime(value, "%Y-%m-%d")
+            except ValueError:
+                continue
+        setattr(episode, key, value)
+    if season_id and season:
+        episode.seasonNumber = season.seasonOrder
+    try:
+        db.session.commit()
+        return make_response(jsonify(episode.to_dict()), 200)
+    except IntegrityError:
+        return make_response(jsonify({"message": "Invalid data"}), 400)
+    except Exception:
+        return make_response(jsonify({"message": "Error occured!"}), 400)
+
+
+def delete_episode(episode_id: int, season_id: Optional[int] = None) -> Response:
+    """
+    """
+    season: Optional[Season] = None
+    try:
+        assert type(episode_id) == int and episode_id > 0
+    except AssertionError:
+        abort(404)
+    if season_id:
+        try:
+            assert type(season_id) == int and season_id > 0
+        except AssertionError:
+            abort(404)
+        season = Season.query.filter_by(id=season_id).first()
+        if not season:
+            abort(404)
+
+    episode: Episode = Episode.query.filter_by(id=episode_id).first()
+    if (not episode) or (season and episode not in season.episodes):
+        abort(404)
+    try:
+        db.session.delete(episode)
+        db.session.commit()
+        return make_response(jsonify({}), 200)
     except Exception:
         return make_response(jsonify({"message": "Error occured!"}), 400)
