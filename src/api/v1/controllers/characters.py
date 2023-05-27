@@ -71,7 +71,6 @@ def create_character() -> Response:
         db.session.commit()
         return make_response(jsonify(character.to_dict()), 201)
     except Exception as e:
-        print(e)
         return make_response(jsonify({"message": "Error occured!"}), 400)
 
 
