@@ -48,3 +48,68 @@ def get_all_characters() -> Response:
 
     characters: List[Dict] = [character.to_dict() for character in query.all()]
     return make_response(jsonify(characters), 200)
+
+
+def create_character() -> Response:
+    """
+    """
+    if not request.is_json:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+
+    try:
+        data: Dict = request.get_json()
+    except Exception:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+    for column in ["firstName", "lastName", "fullName","gender",
+                   "club", "occupation", "playedBy"]:
+        if column not in data:
+            return make_response(jsonify({"message": f"Missing {column}"}), 400)
+
+    try:
+        character: Character = Character(**data)
+        db.session.add(character)
+        db.session.commit()
+        return make_response(jsonify(character.to_dict()), 201)
+    except Exception as e:
+        print(e)
+        return make_response(jsonify({"message": "Error occured!"}), 400)
+
+
+def update_character(id: int) -> Response:
+    """
+    """
+    try:
+        assert type(id) == int and id > 0
+    except AssertionError:
+        return abort(404)
+    if not request.is_json:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+    try:
+        data: Dict = request.get_json()
+    except Exception:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+
+    character: Character = Character.query.filter_by(id=id).first()
+    if not character:
+        return abort(404)
+    for key, value in data.items():
+        if key not in ["id", "createdAt", "updatedAt"]:
+            setattr(character, key, value)
+    db.session.commit()
+    return make_response(jsonify(character.to_dict()), 200)
+
+
+def delete_character(id: int) -> Response:
+    """
+    """
+    try:
+        assert type(id) == int and id > 0
+    except AssertionError:
+        return abort(404)
+
+    character: Character = Character.query.filter_by(id=id).first()
+    if not character:
+        return abort(404)
+    db.session.delete(character)
+    db.session.commit()
+    return make_response(jsonify({}), 200)
