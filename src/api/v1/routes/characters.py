@@ -5,7 +5,8 @@ from api.v1.routes import app_routes
 from api.v1.utils.token import token_required
 from api.v1.controllers.characters import (
     get_character_by_id,
-    get_all_characters
+    get_all_characters,
+    create_character
 )
 
 
@@ -32,4 +33,4 @@ def post_characters(character_id: Optional[int] = None) -> Response:
         else:
             return jsonify({'message': f'Delete character {character_id}'})
     else:
-        return jsonify({'message': 'Create character'})
+        return create_character()
