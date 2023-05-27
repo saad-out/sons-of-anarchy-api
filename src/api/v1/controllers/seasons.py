@@ -104,3 +104,19 @@ def update_season(id: int) -> Response:
         setattr(season, key, value)
     db.session.commit()
     return make_response(jsonify(season.to_dict()), 200)
+
+
+def delete_season(id: int) -> Response:
+    """
+    """
+    try:
+        assert type(id) == int and id > 0
+    except AssertionError:
+        return abort(404)
+
+    season: Season = Season.query.filter_by(id=id).first()
+    if not season:
+        return abort(404)
+    db.session.delete(season)
+    db.session.commit()
+    return make_response(jsonify({}), 200)

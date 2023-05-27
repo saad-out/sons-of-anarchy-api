@@ -7,7 +7,8 @@ from api.v1.controllers.seasons import (
     get_season_by_id,
     get_all_seasons,
     create_season,
-    update_season
+    update_season,
+    delete_season
 )
 
 
@@ -32,6 +33,6 @@ def post_seasons(season_id: Optional[int] = None) -> Response:
         if request.method == 'PUT':
             return update_season(season_id)
         else:
-            return jsonify({'message': f'Delete season {season_id}'})
+            return delete_season(season_id)
     else:
         return create_season()
