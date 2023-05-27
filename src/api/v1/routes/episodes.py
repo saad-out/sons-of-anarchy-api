@@ -7,7 +7,9 @@ from api.v1.controllers.episodes import (
     get_episode_by_id,
     get_all_episodes,
     get_episode_for_season_by_id,
-    get_episodes_for_season
+    get_episodes_for_season,
+    create_episode,
+    create_episode_for_season
 )
 
 
@@ -45,7 +47,7 @@ def post_episodes(episode_id: Optional[int] = None) -> Response:
         else:
             return jsonify({'message': f'Delete episode {episode_id}'})
     else:
-        return jsonify({'message': 'Create episode'})
+        return create_episode()
 
 
 @app_routes.route('/seasons/<int:season_id>/episodes', methods=['POST'])
@@ -60,4 +62,4 @@ def post_season_episodes(season_id: int, episode_id: Optional[int] = None) -> Re
         else:
             return jsonify({'message': f'Delete season {season_id} episode {episode_id}'})
     else:
-        return jsonify({'message': f'Create season {season_id} episode'})
+        return create_episode_for_season(season_id)

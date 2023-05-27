@@ -10,6 +10,7 @@ from typing import (
     List,
     Dict
 )
+from sqlalchemy.exc import IntegrityError
 
 
 from api.v1.models.episode import Episode
@@ -81,4 +82,58 @@ def get_episodes_for_season(season_id: int) -> Response:
         abort(404)
     episodes: List[Dict] = [episode.to_dict() for episode in season.episodes]
     return make_response(jsonify(episodes), 200)
-    
+
+
+def create_episode() -> Response:
+    """
+    """    
+    if not request.is_json:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+
+    try:
+        data: Dict = request.get_json()
+    except Exception:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+    for column in ["seasonNumber", "episodeNumber", "title", "synopsis", "airDate"]:
+        if column not in data:
+            return make_response(jsonify({"message": f"Missing {column}"}), 400)
+
+    try:
+        episode: Episode = Episode(**data)
+        db.session.add(episode)
+        db.session.commit()
+        return make_response(jsonify(episode.to_dict()), 201)
+    except IntegrityError:
+        return make_response(jsonify({"message": "seasonNumber is not valid"}), 400)
+    except Exception:
+        return make_response(jsonify({"message": "Error occured!"}), 400)
+
+
+def create_episode_for_season(id: int) -> Response:
+    """
+    """
+    try:
+        assert type(id) == int and id > 0
+    except AssertionError:
+        abort(404)
+    if not request.is_json:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+    try:
+        data: Dict = request.get_json()
+    except Exception:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+    for column in ["episodeNumber", "title", "synopsis", "airDate"]:
+        if column not in data:
+            return make_response(jsonify({"message": f"Missing {column}"}), 400)
+
+    try:
+        season: Season = Season.query.filter_by(id=id).first()
+        if not season:
+            abort(404)
+        data["seasonNumber"] = season.seasonOrder
+        episode: Episode = Episode(**data)
+        db.session.add(episode)
+        db.session.commit()
+        return make_response(jsonify(episode.to_dict()), 201)
+    except Exception:
+        return make_response(jsonify({"message": "Error occured!"}), 400)
