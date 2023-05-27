@@ -26,7 +26,7 @@ def get_seasons(season_id: Optional[int] = None) -> Response:
 @app_routes.route('/seasons', methods=['POST'])
 @app_routes.route('/seasons/<int:season_id>', methods=['PUT', 'DELETE'])
 @token_required
-def post_seasons(season_id: Optional[int] = None) -> Response:
+def modify_seasons(season_id: Optional[int] = None) -> Response:
     """
     """
     if season_id:
