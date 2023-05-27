@@ -5,7 +5,10 @@ from api.v1.routes import app_routes
 from api.v1.utils.token import token_required
 from api.v1.controllers.seasons import (
     get_season_by_id,
-    get_all_seasons
+    get_all_seasons,
+    create_season,
+    update_season,
+    delete_season
 )
 
 
@@ -28,8 +31,8 @@ def post_seasons(season_id: Optional[int] = None) -> Response:
     """
     if season_id:
         if request.method == 'PUT':
-            return jsonify({'message': f'Update season {season_id}'})
+            return update_season(season_id)
         else:
-            return jsonify({'message': f'Delete season {season_id}'})
+            return delete_season(season_id)
     else:
-        return jsonify({'message': 'Create season'})
+        return create_season()

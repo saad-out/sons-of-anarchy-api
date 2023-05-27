@@ -69,8 +69,8 @@ class Season(BaseModel, db.Model):
             'id': self.id,
             'seasonOrder': self.seasonOrder,
             'title': self.title,
-            'premierDate': self.premierDate,
-            'endDate': self.endDate,
+            'premierDate': self.premierDate.strftime("%Y-%m-%d"),
+            'endDate': self.endDate.strftime("%Y-%m-%d"),
             'synopsis': self.synopsis,
             'episodes': ["localhost:5000/api/v1/episodes/{}".format(episode.id)
                          for episode in self.episodes]
