@@ -10,6 +10,7 @@ from typing import (
     List,
     Dict
 )
+from datetime import datetime
 
 from api.v1.models.season import Season
 from api.v1.utils.database import db
@@ -47,3 +48,29 @@ def get_all_seasons() -> Response:
             pass
     seasons: List[Dict] = [season.to_dict() for season in query.all()]
     return make_response(jsonify(seasons), 200)
+
+
+def create_season() -> Response:
+    """
+    """
+    if not request.is_json:
+        return make_response(jsonify({'message': 'Not a JSON'}), 400)
+
+    try:
+        data: Dict = request.get_json()
+    except Exception:
+        return make_response(jsonify({'message': 'Not a JSON'}), 400)
+    for column in ["seasonOrder", "title", "premierDate", "endDate", "synopsis"]:
+        if column not in data:
+            return make_response(jsonify({'message': f"Missing {column}"}), 400)
+
+    try:
+        data["premierDate"] = datetime.strptime(data["premierDate"], "%Y-%m-%d")
+        data["endDate"] = datetime.strptime(data["endDate"], "%Y-%m-%d")
+        season: Season = Season(**data)
+        db.session.add(season)
+        db.session.commit()
+        return make_response(jsonify(season.to_dict()), 201)
+    except Exception as e:
+        print(e)
+        return make_response(jsonify({'message': 'Error occured!'}), 400)
