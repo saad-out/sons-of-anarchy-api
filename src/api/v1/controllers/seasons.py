@@ -74,3 +74,33 @@ def create_season() -> Response:
     except Exception as e:
         print(e)
         return make_response(jsonify({'message': 'Error occured!'}), 400)
+
+
+def update_season(id: int) -> Response:
+    """
+    """
+    try:
+        assert type(id) == int and id > 0
+    except AssertionError:
+        return abort(404)
+    if not request.is_json:
+        return make_response(jsonify({'message': 'Not a JSON'}), 400)
+    try:
+        data: Dict = request.get_json()
+    except Exception:
+        return make_response(jsonify({'message': 'Not a JSON'}), 400)
+
+    season: Season = Season.query.filter_by(id=id).first()
+    if not season:
+        return abort(404)
+    for key, value in data.items():
+        if key in ["id", "createdAt", "updatedAt"]:
+            continue
+        if key in ["premierDate", "endDate"]:
+            try:
+                value = datetime.strptime(value, "%Y-%m-%d")
+            except ValueError:
+                continue
+        setattr(season, key, value)
+    db.session.commit()
+    return make_response(jsonify(season.to_dict()), 200)
