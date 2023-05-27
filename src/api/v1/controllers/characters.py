@@ -73,3 +73,24 @@ def create_character() -> Response:
     except Exception as e:
         print(e)
         return make_response(jsonify({"message": "Error occured!"}), 400)
+
+
+def update_character(id: int) -> Response:
+    """
+    """
+    if not request.is_json:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+
+    try:
+        data: Dict = request.get_json()
+    except Exception:
+        return make_response(jsonify({"message": "Not a JSON"}), 400)
+
+    character: Character = Character.query.filter_by(id=id).first()
+    if not character:
+        return abort(404)
+    for key, value in data.items():
+        if key not in ["id", "createdAt", "updatedAt"]:
+            setattr(character, key, value)
+    db.session.commit()
+    return make_response(jsonify(character.to_dict()), 200)
