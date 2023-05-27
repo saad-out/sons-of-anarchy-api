@@ -78,9 +78,12 @@ def create_character() -> Response:
 def update_character(id: int) -> Response:
     """
     """
+    try:
+        assert type(id) == int and id > 0
+    except AssertionError:
+        return abort(404)
     if not request.is_json:
         return make_response(jsonify({"message": "Not a JSON"}), 400)
-
     try:
         data: Dict = request.get_json()
     except Exception:
@@ -94,3 +97,19 @@ def update_character(id: int) -> Response:
             setattr(character, key, value)
     db.session.commit()
     return make_response(jsonify(character.to_dict()), 200)
+
+
+def delete_character(id: int) -> Response:
+    """
+    """
+    try:
+        assert type(id) == int and id > 0
+    except AssertionError:
+        return abort(404)
+
+    character: Character = Character.query.filter_by(id=id).first()
+    if not character:
+        return abort(404)
+    db.session.delete(character)
+    db.session.commit()
+    return make_response(jsonify({}), 200)
