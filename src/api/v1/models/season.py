@@ -54,10 +54,11 @@ class Season(BaseModel, db.Model):
 
     id: Mapped[int] = db.Column(db.Integer, primary_key=True, autoincrement=True)
     seasonOrder: Mapped[str] = db.Column(db.String(64), nullable=False, unique=True)
-    title: Mapped[str] = db.Column(db.String(64), nullable=False)
     premierDate: Mapped[datetime] = db.Column(db.DateTime, nullable=False)
     endDate: Mapped[datetime] = db.Column(db.DateTime, nullable=False)
     synopsis: Mapped[str] = db.Column(db.Text, nullable=False)
+    numberOfEpisodes: Mapped[int] = db.Column(db.Integer, nullable=False)
+    viewership: Mapped[int] = db.Column(db.Float(precision=2), nullable=False)
 
     episodes: Mapped[list[Episode]] = db.relationship('Episode', backref='season', lazy=True)
 
@@ -68,10 +69,11 @@ class Season(BaseModel, db.Model):
         return {
             'id': self.id,
             'seasonOrder': self.seasonOrder,
-            'title': self.title,
             'premierDate': self.premierDate.strftime("%Y-%m-%d"),
             'endDate': self.endDate.strftime("%Y-%m-%d"),
             'synopsis': self.synopsis,
+            'numberOfEpisodes': self.numberOfEpisodes,
+            'viewership': self.viewership,
             'episodes': ["localhost:5000/api/v1/episodes/{}".format(episode.id)
                          for episode in self.episodes]
         }
