@@ -32,19 +32,7 @@ from sqlalchemy.orm import Mapped
 
 class User(BaseModel, db.Model):
     """
-    Define a `User` class that represents a user in our Flask-SQLAlchemy API application.
-
-    This class inherits from `BaseModel` and defines attributes that are specific to users such as `firstName`,
-
-    Attributes:
-        id (Mapped[int]): An integer column that uniquely identifies each user.
-        firstName (Mapped[str]): A string column that represents the user's first name.
-        lastName (Mapped[str]): A string column that represents the user's last name.
-        email (Mapped[str]): A string column that represents the user's email.
-        password (Mapped[str]): A string column that represents the user's password.
-
-    Methods:
-        __repr__(self): Return a string representation of the user instance.    
+    Represents a user for the API application. 
     """
     __tablename__ = 'users'
 

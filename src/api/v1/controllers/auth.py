@@ -1,3 +1,6 @@
+"""
+This module defines the controllers for the API version 1 authentication endpoint.
+"""
 from flask import (
     request,
     jsonify,
@@ -21,6 +24,11 @@ load_dotenv()
 
 def login_user() -> Response:
     """
+    Authenticates a user and returns a JSON response
+    containing the user's information and a JWT token.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     if not request.is_json:
         return make_response(jsonify({'message': 'Missing JSON in request'}), 400)

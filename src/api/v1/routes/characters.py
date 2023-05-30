@@ -1,3 +1,6 @@
+"""
+This module contains the routes for the characters endpoints.
+"""
 from flask import (
     request,
     jsonify,
@@ -20,6 +23,13 @@ from api.v1.controllers.characters import (
 @app_routes.route('/characters/<int:character_id>', methods=['GET'])
 def get_characters(character_id: Optional[int] = None) -> Response:
     """
+    Gets a list of all characters or a single character by ID.
+
+    Args:
+        character_id (int, optional): The ID of the character to get. Defaults to None.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     if character_id:
         return get_character_by_id(character_id) 
@@ -32,6 +42,13 @@ def get_characters(character_id: Optional[int] = None) -> Response:
 @token_required
 def modify_characters(character_id: Optional[int] = None) -> Response:
     """
+    Creates, updates, or deletes a character.
+
+    Args:
+        character_id (int, optional): The ID of the character to modify. Defaults to None.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     if character_id:
         if request.method == 'PUT':

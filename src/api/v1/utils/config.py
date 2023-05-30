@@ -1,3 +1,6 @@
+"""
+This module contains the configuration for the API.
+"""
 import os
 from dotenv import load_dotenv
 

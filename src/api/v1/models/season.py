@@ -9,11 +9,11 @@ Usage:
     ```
     from api.v1.models.season import Season
 
-    class MySeason(Season):
-        __tablename__ = 'my_season_table'
-
-        # define additional fields here
+    season = Season(
+        seasonOrder='S01',
+        title='Season 1',
         ...
+    )
     ```
 
     Note: this module requires the `flask_sqlalchemy` and `sqlalchemy` packages to be installed.
@@ -33,18 +33,6 @@ from datetime import datetime
 class Season(BaseModel, db.Model):
     """
     Represent a season of a TV show.
-
-    Attributes:
-        id (Mapped[int]): An integer column that uniquely identifies each season.
-        seasonOrder (Mapped[str]): A string column that indicates the season order.
-        title (Mapped[str]): A string column that represents the title of the season.
-        premierDate (Mapped[datetime]): A timestamp column that indicates the premier date of the season.
-        endDate (Mapped[datetime]): A timestamp column that indicates the end date of the season.
-        synopsis (Mapped[str]): A text column that provides a synopsis of the season.
-        episodes (Mapped[list[Episode]]): A relationship with the `Episode` class that represents the episodes associated with the season.
-
-    Methods:
-        __repr__(self): Return a string representation of the season instance.
     """
     __tablename__ = 'seasons'
 

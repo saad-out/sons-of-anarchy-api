@@ -1,3 +1,6 @@
+"""
+This module contains the controllers for the episodes endpoints.
+"""
 from flask import (
     abort,
     jsonify,
@@ -21,6 +24,13 @@ from api.v1.utils.database import db
 
 def get_episode_by_id(id: int) -> Response:
     """
+    Gets an episode by ID.
+
+    Args:
+        id (int): The ID of the episode to get.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     try:
         assert type(id) == int and id > 0
@@ -35,6 +45,10 @@ def get_episode_by_id(id: int) -> Response:
 
 def get_all_episodes() -> Response:
     """
+    Gets a list of all episodes.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     query = db.session.query(Episode)
     limit: Optional[str] = request.args.get("limit")
@@ -55,6 +69,14 @@ def get_all_episodes() -> Response:
 
 def get_episode_for_season_by_id(season_id: int, episode_id: int) -> Response:
     """
+    Gets an episode by ID for a season.
+
+    Args:
+        season_id (int): The ID of the season to get the episode for.
+        episode_id (int): The ID of the episode to get.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     try:
         assert type(season_id) == type(episode_id) == int
@@ -73,6 +95,13 @@ def get_episode_for_season_by_id(season_id: int, episode_id: int) -> Response:
 
 def get_episodes_for_season(season_id: int) -> Response:
     """
+    Gets a list of episodes for a season.
+
+    Args:
+        season_id (int): The ID of the season to get episodes for.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     try:
         assert type(season_id) == int and season_id > 0
@@ -87,6 +116,10 @@ def get_episodes_for_season(season_id: int) -> Response:
 
 def create_episode() -> Response:
     """
+    Creates an episode.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """    
     if not request.is_json:
         return make_response(jsonify({"message": "Not a JSON"}), 400)
@@ -112,6 +145,13 @@ def create_episode() -> Response:
 
 def create_episode_for_season(id: int) -> Response:
     """
+    Creates an episode for a season.
+
+    Args:
+        id (int): The ID of the season to create the episode for.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     try:
         assert type(id) == int and id > 0
@@ -142,6 +182,14 @@ def create_episode_for_season(id: int) -> Response:
 
 def update_episode(episode_id: int, season_id: Optional[int] = None) -> Response:
     """
+    Updates an episode.
+
+    Args:
+        episode_id (int): The ID of the episode to update.
+        season_id (int, optional): The ID of the season to update the episode for. Defaults to None.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     season: Optional[Season] = None
     if season_id:
@@ -185,6 +233,14 @@ def update_episode(episode_id: int, season_id: Optional[int] = None) -> Response
 
 def delete_episode(episode_id: int, season_id: Optional[int] = None) -> Response:
     """
+    Deletes an episode.
+
+    Args:
+        episode_id (int): The ID of the episode to delete.
+        season_id (int, optional): The ID of the season to delete the episode for. Defaults to None.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     season: Optional[Season] = None
     try:
