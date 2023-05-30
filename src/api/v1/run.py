@@ -4,8 +4,8 @@ from flask import (
     make_response,
     Response,
 )
-
 from flask_migrate import Migrate
+from flask_cors import CORS
 
 from api.v1.models import *
 from api.v1.routes import app_routes
@@ -17,6 +17,7 @@ app.url_map.strict_slashes = False
 app.config.from_object(Config)
 db.init_app(app)
 migrate: Migrate = Migrate(app, db)
+CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 app.register_blueprint(app_routes)
 
