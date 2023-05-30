@@ -73,6 +73,7 @@ class Character(BaseModel, db.Model):
     titles: Mapped[list[str]] = db.Column(db.JSON)
     aliases: Mapped[list[str]] = db.Column(db.JSON)
     playedBy: Mapped[list[str]] = db.Column(db.JSON, nullable=False)
+    image: Mapped[str] = db.Column(db.String(64))
 
     def __repr__(self):
         return f'{self.fullName} ({self.age}) - {self.club}'
@@ -81,6 +82,7 @@ class Character(BaseModel, db.Model):
         """
         Return a dictionary representation of the character instance.
         """
+        IMAGE_URL_PREFIX = 'localhost:5000/api/v1/images/{image}'
         return {
             'id': self.id,
             'firstName': self.firstName,
@@ -94,4 +96,5 @@ class Character(BaseModel, db.Model):
             'titles': self.titles,
             'aliases': self.aliases,
             'playedBy': self.playedBy,
+            'image': IMAGE_URL_PREFIX.format(image=self.image),
         }
