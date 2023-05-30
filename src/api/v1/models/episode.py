@@ -9,7 +9,11 @@ Usage:
     ```
     from episode import Episode
 
-    episode = Episode(seasonNumber='1', episodeNumber=1, title='Pilot', synopsis='This is the first episode of the series', airDate=datetime(2020, 1, 1))
+    episode = Episode(seasonNumber='S01',
+        episodeNumber=1,
+        title='Pilot',
+        ...
+    )
     ```
 
     Note: this module requires the `flask_sqlalchemy` and `sqlalchemy` packages to be installed.
@@ -28,20 +32,6 @@ from datetime import datetime
 class Episode(BaseModel, db.Model):
     """
     Represents a TV episode.
-
-    This class defines fields specific to TV episodes, such as `seasonNumber`, `episodeNumber`, `title`, `synopsis`, and `airDate`.
-
-    Attributes:
-        id (Mapped[int]): A unique integer ID for the episode.
-        seasonNumber (Mapped[str]): A string column that indicates the season number the episode belongs to.
-        episodeNumber (Mapped[int]): An integer column that indicates the episode number within the season.
-        title (Mapped[str]): A string column that indicates the title of the episode.
-        synopsis (Mapped[str]): A text column that provides a summary of the episode's plot.
-        airDate (Mapped[datetime]): A timestamp column that indicates the date the episode aired.
-
-    Methods:
-        __repr__(self): Return a string representation of the episode instance.
-
     """
     __tablename__ = 'episodes'
 

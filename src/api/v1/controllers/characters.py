@@ -1,3 +1,6 @@
+"""
+This module contains the controllers for the characters endpoints.
+"""
 from flask import (
     abort,
     jsonify,
@@ -17,6 +20,13 @@ from api.v1.models.character import Character
 
 def get_character_by_id(id: int) -> Response:
     """
+    Gets a character by ID.
+
+    Args:
+        id (int): The ID of the character to get.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     try:
         assert type(id) == int and id > 0
@@ -31,6 +41,10 @@ def get_character_by_id(id: int) -> Response:
 
 def get_all_characters() -> Response:
     """
+    Gets a list of all characters.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     query = db.session.query(Character)
     limit: Optional[str] = request.args.get("limit")
@@ -52,6 +66,10 @@ def get_all_characters() -> Response:
 
 def create_character() -> Response:
     """
+    Creates a character.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     if not request.is_json:
         return make_response(jsonify({"message": "Not a JSON"}), 400)
@@ -76,6 +94,13 @@ def create_character() -> Response:
 
 def update_character(id: int) -> Response:
     """
+    Updates a character.
+
+    Args:
+        id (int): The ID of the character to update.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     try:
         assert type(id) == int and id > 0
@@ -100,6 +125,13 @@ def update_character(id: int) -> Response:
 
 def delete_character(id: int) -> Response:
     """
+    Deletes a character.
+
+    Args:
+        id (int): The ID of the character to delete.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     try:
         assert type(id) == int and id > 0

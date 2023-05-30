@@ -1,3 +1,6 @@
+"""
+This module contains the routes for the seasons endpoints.
+"""
 from flask import jsonify, Response, request
 from typing import Optional
 
@@ -16,6 +19,13 @@ from api.v1.controllers.seasons import (
 @app_routes.route('/seasons/<int:season_id>', methods=['GET'])
 def get_seasons(season_id: Optional[int] = None) -> Response:
     """
+    Gets a list of all seasons or a single season by ID.
+
+    Args:
+        season_id (int, optional): The ID of the season to get. Defaults to None.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     if season_id:
         return get_season_by_id(season_id)
@@ -28,6 +38,13 @@ def get_seasons(season_id: Optional[int] = None) -> Response:
 @token_required
 def modify_seasons(season_id: Optional[int] = None) -> Response:
     """
+    Creates, updates, or deletes a season.
+
+    Args:
+        season_id (int, optional): The ID of the season to modify. Defaults to None.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     if season_id:
         if request.method == 'PUT':

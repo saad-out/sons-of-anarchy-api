@@ -1,3 +1,6 @@
+"""
+This module contains the controllers for the seasons endpoints.
+"""
 from flask import (
     abort,
     jsonify,
@@ -18,6 +21,13 @@ from api.v1.utils.database import db
 
 def get_season_by_id(id: int) -> Response:
     """
+    Gets a season by ID.
+
+    Args:
+        id (int): The ID of the season to get.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     try:
         assert type(id) == int and id > 0
@@ -32,6 +42,10 @@ def get_season_by_id(id: int) -> Response:
 
 def get_all_seasons() -> Response:
     """
+    Gets a list of all seasons.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     query = db.session.query(Season)
     limit: Optional[str] = request.args.get("limit")
@@ -52,6 +66,10 @@ def get_all_seasons() -> Response:
 
 def create_season() -> Response:
     """
+    Creates a season.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     if not request.is_json:
         return make_response(jsonify({'message': 'Not a JSON'}), 400)
@@ -72,12 +90,18 @@ def create_season() -> Response:
         db.session.commit()
         return make_response(jsonify(season.to_dict()), 201)
     except Exception as e:
-        print(e)
         return make_response(jsonify({'message': 'Error occured!'}), 400)
 
 
 def update_season(id: int) -> Response:
     """
+    Updates a season.
+
+    Args:
+        id (int): The ID of the season to update.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     try:
         assert type(id) == int and id > 0
@@ -108,6 +132,13 @@ def update_season(id: int) -> Response:
 
 def delete_season(id: int) -> Response:
     """
+    Deletes a season.
+
+    Args:
+        id (int): The ID of the season to delete.
+
+    Returns:
+        A Flask Response object containing a JSON response
     """
     try:
         assert type(id) == int and id > 0
