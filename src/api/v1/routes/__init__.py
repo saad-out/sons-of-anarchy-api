@@ -7,6 +7,7 @@ from api.v1.routes.seasons import *
 from api.v1.routes.episodes import *
 from api.v1.routes.search import *
 from api.v1.routes.auth import *
+from api.v1.routes.images import *
 
 
 @app_routes.route('/')
