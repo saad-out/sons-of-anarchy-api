@@ -1,0 +1,667 @@
+<!--
+ API Documentation HTML Template  - 1.0.1
+ Copyright © 2016 Florian Nicolas
+ Licensed under the MIT license.
+ https://github.com/ticlekiwi/API-Documentation-HTML-Template
+ !-->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>API - Documentation</title>
+    <meta name="description" content="">
+    <meta name="author" content="ticlekiwi">
+
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/hightlightjs-dark.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300&family=Source+Code+Pro:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" media="all">
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body class="one-content-column-version">
+    <div class="left-menu">
+        <div class="content-logo">
+            <div class="logo">
+                <img alt="platform by Emily van den Heever from the Noun Project"
+                    title="platform by Emily van den Heever from the Noun Project" src="images/logo.png" height="32" />
+                <span>API Documentation</span>
+            </div>
+            <button class="burger-menu-icon" id="button-menu-mobile">
+                <svg width="34" height="34" viewBox="0 0 100 100">
+                    <path class="line line1"
+                        d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058">
+                    </path>
+                    <path class="line line2" d="M 20,50 H 80"></path>
+                    <path class="line line3"
+                        d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-menu-closer"></div>
+        <div class="content-menu">
+            <div class="content-infos">
+                <div class="info"><b>Version:</b> 1.0.5</div>
+                <div class="info"><b>Last Updated:</b> 15th Sep, 2021</div>
+            </div>
+            <ul>
+                <li class="scroll-to-link active" data-target="content-get-started">
+                    <a>GET STARTED</a>
+                </li>
+                <li class="scroll-to-link" data-target="content-get-characters">
+                    <a>Get Characters</a>
+                </li>
+                <li class="scroll-to-link" data-target="content-get-character">
+                    <a>Get A Single Character</a>
+                </li>
+                <li class="scroll-to-link" data-target="content-get-seasons">
+                    <a>Get Seasons</a>
+                </li>
+                <li class="scroll-to-link" data-target="content-get-season">
+                    <a>Get A Single Season</a>
+                </li>
+                <li class="scroll-to-link" data-target="content-get-episodes">
+                    <a>Get Episodes</a>
+                </li>
+                <li class="scroll-to-link" data-target="content-get-episode">
+                    <a>Get A Single Episode</a>
+                </li>
+                <li class="scroll-to-link" data-target="content-get-episodes-for-season">
+                    <a>Get Episodes Of A Season</a>
+                </li>
+                <li class="scroll-to-link" data-target="content-get-episode-for-season">
+                    <a>Get A Single Season Episode</a>
+                </li>
+                <li class="scroll-to-link" data-target="content-errors">
+                    <a>Errors</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="content-page">
+        <div class="content">
+            <div class="overflow-hidden content-section" id="content-get-started">
+                <h1>Get started</h1>
+                <p>
+
+                    The Sons of Anarchy API provides free access to endpoints for retrieving information about
+                    characters, seasons, and episodes of the Sons of Anarchy TV show.
+                </p>
+                <p>
+                    You can explore and utilize these endpoints without any restrictions or the need for an API key.
+                    Start exploring the fascinating world of Sons of Anarchy today!
+                </p>
+            </div>
+            <div class="overflow-hidden content-section" id="content-get-characters">
+                <h2>get characters</h2>
+                <p>
+                    To get all (or a range of) characters you need to make a GET call to the following url :<br>
+                    <code class="higlighted break-word">http://localhost:5000/api/v1/characters</code>
+                </p>
+                <br>
+                <h4>QUERY PARAMETERS</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <td>offset</td>
+                        <td>Integer</td>
+                        <td>(optional) specifies the starting point of a collection of results. Defautls to
+                            <code>0</code>.
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>limit</td>
+                            <td>Integer</td>
+                            <td>(optional) determines the maximum number of results to be returned.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>Example:</h4>
+                <p>
+                    <code
+                        class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/characters?limit=2"</code>
+                </p>
+                <h4>Output:</h4>
+                <pre>
+                    <code>[
+  {
+    "aliases": [
+      "J.T.",
+      "John Teller"
+    ],
+    "club": "Sons of Anarchy Motorcycle Club, Redwood Original (SAMCRO)",
+    "firstName": "Jax",
+    "fullName": "Jackson Nathaniel \"Jax\" Teller",
+    "gender": "Male",
+    "id": 1,
+    "image": "localhost:5000/api/v1/images/jax.jpg",
+    "lastName": "Teller",
+    "middleName": "Nathaniel",
+    "occupation": "Outlaw biker",
+    "playedBy": [
+      "Charlie Hunnam"
+    ],
+    "titles": [
+      "Vice President",
+      "President"
+    ]
+  },
+  {
+    "aliases": [],
+    "club": "Sons of Anarchy Motorcycle Club, Redwood Original (SAMCRO)",
+    "firstName": "Gemma",
+    "fullName": "Gemma Teller Morrow",
+    "gender": "Female",
+    "id": 2,
+    "image": "localhost:5000/api/v1/images/gemma.jpg",
+    "lastName": "Teller Morrow",
+    "middleName": "",
+    "occupation": "Family Matriarch",
+    "playedBy": [
+      "Katey Sagal"
+    ],
+    "titles": [
+      "Queen"
+    ]
+  }
+]
+               </code>
+            </pre>
+            </div>
+            <div class="overflow-hidden content-section" id="content-get-character">
+                <h2>get a single character</h2>
+                <p>
+                    To get a character you need to make a GET call to the following url with `id` as the character
+                    ID:<br>
+                    <code class="higlighted break-word">http://localhost:5000/api/v1/characters/{int:id}</code>
+                </p>
+                <br>
+                <h4>QUERY PARAMETERS</h4>
+                <p><b>No query params for this endpoint.</b></p>
+                <h4>Example:</h4>
+                <p>
+                    <code class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/characters/10"</code>
+                </p>
+                <h4>Output:</h4>
+                <pre><code>
+{
+  "aliases": [
+    "Piney"
+  ],
+  "club": "Sons of Anarchy Motorcycle Club, Redwood Original (SAMCRO)",
+  "firstName": "Piermont",
+  "fullName": "Piermont \"Piney\" Winston",
+  "gender": "Male",
+  "id": 10,
+  "image": "localhost:5000/api/v1/images/piney.jpg",
+  "lastName": "Winston",
+  "middleName": "",
+  "occupation": "Outlaw biker",
+  "playedBy": [
+    "William Lucking"
+  ],
+  "titles": []
+}
+                </code></pre>
+            </div>
+
+            <div class="overflow-hidden content-section" id="content-get-seasons">
+                <h2>Get seasons</h2>
+                <p>
+                    To get all (or a range of) seasons, you need to make a GET call to the following URL:<br>
+                    <code class="higlighted break-word">http://localhost:5000/api/v1/seasons</code>
+                </p>
+                <br>
+                <h4>QUERY PARAMETERS</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>offset</td>
+                            <td>Integer</td>
+                            <td>(optional) Specifies the starting point of a collection of results. Defaults to
+                                <code>0</code>.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>limit</td>
+                            <td>Integer</td>
+                            <td>(optional) Determines the maximum number of results to be returned.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>Example:</h4>
+                <p>
+                    <code
+                        class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/seasons?offset=4&limit=2"</code>
+                </p>
+                <h4>Output:</h4>
+                <pre><code>
+[
+  {
+    "endDate": "2012-12-04",
+    "episodes": [
+      "localhost:5000/api/v1/episodes/54",
+      "localhost:5000/api/v1/episodes/55",
+      "localhost:5000/api/v1/episodes/56",
+      "localhost:5000/api/v1/episodes/57",
+      "localhost:5000/api/v1/episodes/58",
+      "localhost:5000/api/v1/episodes/59",
+      "localhost:5000/api/v1/episodes/60",
+      "localhost:5000/api/v1/episodes/61",
+      "localhost:5000/api/v1/episodes/62",
+      "localhost:5000/api/v1/episodes/63",
+      "localhost:5000/api/v1/episodes/64",
+      "localhost:5000/api/v1/episodes/65",
+      "localhost:5000/api/v1/episodes/66"
+    ],
+    "id": 5,
+    "numberOfEpisodes": 13,
+    "premierDate": "2012-09-11",
+    "seasonOrder": "S05",
+    "synopsis": "The fifth season finds SAMCRO in a precarious position as they face external threats and internal divisions. With the fallout from past actions haunting them, the Sons of Anarchy must confront their own demons while battling against rival gangs, law enforcement, and the ever-present dangers of their outlaw lifestyle. Loyalties are tested, alliances are shattered, and the fate of the club hangs in the balance as they fight to protect their own and preserve the legacy of the Sons of Anarchy.",
+    "viewership": 4.37
+  },
+  {
+    "endDate": "2013-12-10",
+    "episodes": [
+      "localhost:5000/api/v1/episodes/67",
+      "localhost:5000/api/v1/episodes/68",
+      "localhost:5000/api/v1/episodes/69",
+      "localhost:5000/api/v1/episodes/70",
+      "localhost:5000/api/v1/episodes/71",
+      "localhost:5000/api/v1/episodes/72",
+      "localhost:5000/api/v1/episodes/73",
+      "localhost:5000/api/v1/episodes/74",
+      "localhost:5000/api/v1/episodes/75",
+      "localhost:5000/api/v1/episodes/76",
+      "localhost:5000/api/v1/episodes/77",
+      "localhost:5000/api/v1/episodes/78",
+      "localhost:5000/api/v1/episodes/79"
+    ],
+    "id": 6,
+    "numberOfEpisodes": 13,
+    "premierDate": "2013-09-10",
+    "seasonOrder": "S06",
+    "synopsis": "In the sixth season, SAMCRO faces its most formidable challenges yet. As tensions rise within the club and with rival gangs, Jax is forced to make difficult decisions that will have far-reaching consequences. With outside pressures mounting and personal loyalties tested, the Sons of Anarchy must navigate a dangerous path to protect their club's future and the well-being of their loved ones. Loyalties will be shattered, alliances will be forged, and the line between right and wrong will blur as the Sons ride into uncharted territory.",
+    "viewership": 7.48
+  }
+]</code></pre>
+            </div>
+
+            <div class="overflow-hidden content-section" id="content-get-season">
+                <h2>Get a single season</h2>
+                <p>
+                    To get a season, you need to make a GET call to the following URL with `id` as the season ID:<br>
+                    <code class="higlighted break-word">http://localhost:5000/api/v1/seasons/{int:id}</code>
+                </p>
+                <br>
+                <h4>QUERY PARAMETERS</h4>
+                <p><b>No query params for this endpoint.</b></p>
+                <h4>Example:</h4>
+                <p>
+                    <code class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/seasons/7"</code>
+                </p>
+                <h4>Output:</h4>
+                <pre><code>
+{
+  "endDate": "2014-12-09",
+  "episodes": [
+    "localhost:5000/api/v1/episodes/80",
+    "localhost:5000/api/v1/episodes/81",
+    "localhost:5000/api/v1/episodes/82",
+    "localhost:5000/api/v1/episodes/83",
+    "localhost:5000/api/v1/episodes/84",
+    "localhost:5000/api/v1/episodes/85",
+    "localhost:5000/api/v1/episodes/86",
+    "localhost:5000/api/v1/episodes/87",
+    "localhost:5000/api/v1/episodes/88",
+    "localhost:5000/api/v1/episodes/89",
+    "localhost:5000/api/v1/episodes/90",
+    "localhost:5000/api/v1/episodes/91",
+    "localhost:5000/api/v1/episodes/92"
+  ],
+  "id": 7,
+  "numberOfEpisodes": 13,
+  "premierDate": "2014-09-09",
+  "seasonOrder": "S07",
+  "synopsis": "The final season of Sons of Anarchy brings the epic saga to a gripping conclusion. As SAMCRO deals with the fallout from past actions and confronts the consequences of their choices, they find themselves facing their most dangerous adversaries yet. Old alliances are tested, new alliances are forged, and secrets are revealed that will rock the very foundation of the club. With the weight of their past bearing down on them, the Sons of Anarchy must confront their demons, face their ultimate truths, and make sacrifices in order to secure their legacy and the future of those they love.",
+  "viewership": 4.6
+}
+                </code></pre>
+            </div>
+
+            <div class="overflow-hidden content-section" id="content-get-episodes">
+                <h2>Get episodes</h2>
+                <p>
+                    To get all (or a range of) episodes, you need to make a GET call to the following URL:<br>
+                    <code class="higlighted break-word">http://localhost:5000/api/v1/episodes</code>
+                </p>
+                <br>
+                <h4>QUERY PARAMETERS</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>offset</td>
+                            <td>Integer</td>
+                            <td>(optional) Specifies the starting point of a collection of results. Defaults to
+                                <code>0</code>.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>limit</td>
+                            <td>Integer</td>
+                            <td>(optional) Determines the maximum number of results to be returned.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>Example:</h4>
+                <p>
+                    <code
+                        class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/episodes?offset=90"</code>
+                </p>
+                <h4>Output:</h4>
+                <pre><code>
+[
+  {
+    "airDate": "2014-12-02",
+    "directedBy": [
+      "Paris Barclay"
+    ],
+    "episodeNumber": 12,
+    "id": 91,
+    "season": "localhost:5000/api/v1/seasons/7",
+    "seasonNumber": "S07",
+    "synopsis": "In the explosive penultimate episode, SAMCRO faces the consequences of their actions as alliances crumble, friendships are tested, and loyalties are questioned. Jax must make the ultimate sacrifice to protect his family and secure the future of the club. Charming will never be the same again.",
+    "title": "Red Rose",
+    "writtenBy": [
+      "Kurt Sutter",
+      "Charles Murray"
+    ]
+  },
+  {
+    "airDate": "2014-12-09",
+    "directedBy": [
+      "Kurt Sutter"
+    ],
+    "episodeNumber": 13,
+    "id": 92,
+    "season": "localhost:5000/api/v1/seasons/7",
+    "seasonNumber": "S07",
+    "synopsis": "In the gripping series finale, SAMCRO confronts the sins of the past as Jax seeks closure and redemption. The Sons of Anarchy face their ultimate fate as alliances are shattered, enemies close in, and the truth about Jax's father is finally revealed. Charming will never be the same again.",
+    "title": "Papa's Goods",
+    "writtenBy": [
+      "Kurt Sutter"
+    ]
+  }
+]
+                </code></pre>
+            </div>
+
+            <div class="overflow-hidden content-section" id="content-get-episode">
+                <h2>Get a single episode</h2>
+                <p>
+                    To get an episode, you need to make a GET call to the following URL with `id` as the episode ID:<br>
+                    <code class="higlighted break-word">http://localhost:5000/api/v1/episodes/{int:id}</code>
+                </p>
+                <br>
+                <h4>QUERY PARAMETERS</h4>
+                <p><b>No query params for this endpoint.</b></p>
+                <h4>Example:</h4>
+                <p>
+                    <code class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/episodes/1"</code>
+                </p>
+                <h4>Output:</h4>
+                <pre><code>
+{
+  "airDate": "2008-09-03",
+  "directedBy": [
+    "Allen Coulter",
+    "Michael Dinner"
+  ],
+  "episodeNumber": 1,
+  "id": 1,
+  "season": "localhost:5000/api/v1/seasons/1",
+  "seasonNumber": "S01",
+  "synopsis": "In the small town of Charming, the Sons of Anarchy Motorcycle Club Redwood Original (SAMCRO) is led by President Clay Morrow. Jax Teller, the vice president of the club and son of the founder, struggles with his loyalty to the club and his growing disillusionment with its illegal activities. When a rival gang threatens SAMCRO's gun-running operation, tensions rise, and Jax finds himself torn between his family's legacy and his desire for a better life.",
+  "title": "Pilot",
+  "writtenBy": [
+    "Kurt Sutter"
+  ]
+}
+                </code></pre>
+            </div>
+
+            <div class="overflow-hidden content-section" id="content-get-episodes-for-season">
+                <h2>Get Episodes Of A Season</h2>
+                <p>
+                    To get all episodes of a specific season, you need to make a GET call to the following URL:<br>
+                    <code
+                        class="higlighted break-word">http://localhost:5000/api/v1/seasons/{int:season_id}/episodes</code>
+                </p>
+                <p>
+                    Replace <code>{int:season_id}</code> with the desired season ID.
+                </p>
+                <br>
+                <h4>QUERY PARAMETERS</h4>
+                <p><b>No query params for this endpoint.</b></p>
+                <h4>Example:</h4>
+                <p>
+                    <code
+                        class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/seasons/3/episodes"</code>
+                </p>
+                <h4>Output:</h4>
+                <pre><code>
+[
+  {
+    "airDate": "2011-09-06",
+    "directedBy": [
+      "Paris Barclay"
+    ],
+    "episodeNumber": 1,
+    "id": 40,
+    "season": "localhost:5000/api/v1/seasons/4",
+    "seasonNumber": "S04",
+    "synopsis": "Following the events of the previous season, SAMCRO faces the fallout of their actions as they try to rebuild their club and establish new alliances. Jax takes on a leadership role with the club, while Clay struggles to maintain his influence. The tension between the members escalates as they navigate a world filled with danger and uncertainty.",
+    "title": "Out",
+    "writtenBy": [
+      "Kurt Sutter"
+    ]
+  },
+  {
+    "airDate": "2011-09-13",
+    "directedBy": [
+      "Guy Ferland"
+    ],
+    "episodeNumber": 2,
+    "id": 41,
+    "season": "localhost:5000/api/v1/seasons/4",
+    "seasonNumber": "S04",
+    "synopsis": "SAMCRO continues to face challenges as they work to solidify their position in the criminal underworld. Jax grapples with the direction of the club, while Clay takes desperate measures to protect his legacy. Loyalties are tested, alliances are formed, and the club must navigate treacherous waters to survive.",
+    "title": "Booster",
+    "writtenBy": [
+      "Dave Erickson",
+      "Chris Collins"
+    ]
+  },
+  ... # All episodes of season 3
+]
+                </code></pre>
+            </div>
+
+            <div class="overflow-hidden content-section" id="content-get-episode-for-season">
+                <h2>Get a single season Episode</h2>
+                <p>
+                    To get an episode from a specific season, you need to make a GET call to the following URL:<br>
+                    <code
+                        class="higlighted break-word">http://localhost:5000/api/v1/seasons/{int:season_id}/episodes/{int:episode_id}</code>
+                </p>
+                <p>
+                    Replace <code>{int:season_id}</code> with the desired season ID and <code>{int:episode_id}</code>
+                    with the desired episode ID.
+                </p>
+                <br>
+                <h4>QUERY PARAMETERS</h4>
+                <p><b>No query params for this endpoint.</b></p>
+                <h4>Example:</h4>
+                <p>
+                    <code
+                        class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/seasons/3/episodes/27"</code>
+                </p>
+                <h4>Output:</h4>
+                <pre><code>
+{
+  "airDate": "2010-09-07",
+  "directedBy": [
+    "Stephen Kay"
+  ],
+  "episodeNumber": 1,
+  "id": 27,
+  "season": "localhost:5000/api/v1/seasons/3",
+  "seasonNumber": "S03",
+  "synopsis": "After the events of the season finale, SAMCRO finds themselves in a new environment as they relocate to a different town. Jax grapples with the consequences of his actions, while Clay tries to maintain control of the club. Tensions rise as the club clashes with a powerful new adversary.",
+  "title": "SO",
+  "writtenBy": [
+    "Kurt Sutter"
+  ]
+}
+                </code></pre>
+            </div>
+
+
+
+            <div class="overflow-hidden content-section" id="content-errors">
+                <h2>Errors</h2>
+                <p>
+                    The Sons Of Anarchy API uses the following error codes:
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Error Code</th>
+                            <th>Error Message</th>
+                            <th>Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>400</td>
+                            <td>Depends on the request.</td>
+                            <td>
+                                Bad request.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>404</td>
+                            <td>{'error': 'Not found'}</td>
+                            <td>
+                                The requested resource doesn't exist.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>405</td>
+                            <td>
+                               {'error': 'Method not allowed'} 
+                            </td>
+                            <td>
+                                The requested method is not allowed.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Github Corner Ribbon - to remove (Ribbon created with : http://tholman.com/github-corners/ )-->
+    <a href="https://github.com/ticlekiwi/API-Documentation-HTML-Template" class="github-corner"
+        aria-label="View source on Github" title="View source on Github"><svg width="80" height="80"
+            viewBox="0 0 250 250"
+            style="z-index:99999; fill:#70B7FD; color:#fff; position: fixed; top: 0; border: 0; right: 0;"
+            aria-hidden="true">
+            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+            <path
+                d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+                fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+            <path
+                d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+                fill="currentColor" class="octo-body"></path>
+        </svg></a>
+    <style>
+        .github-corner:hover .octo-arm {
+            animation: octocat-wave 560ms ease-in-out
+        }
+
+        @keyframes octocat-wave {
+
+            0%,
+            100% {
+                transform: rotate(0)
+            }
+
+            20%,
+            60% {
+                transform: rotate(-25deg)
+            }
+
+            40%,
+            80% {
+                transform: rotate(10deg)
+            }
+        }
+
+        @media (max-width:500px) {
+            .github-corner:hover .octo-arm {
+                animation: none
+            }
+
+            .github-corner .octo-arm {
+                animation: octocat-wave 560ms ease-in-out
+            }
+        }
+
+        @media only screen and (max-width:680px) {
+            .github-corner>svg {
+                right: auto !important;
+                left: 0 !important;
+                transform: rotate(270deg) !important;
+            }
+        }
+    </style>
+    <!-- END Github Corner Ribbon - to remove -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
