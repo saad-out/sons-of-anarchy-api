@@ -62,6 +62,20 @@ def not_found(error) -> Response:
     return make_response(jsonify({'error': 'Not found'}), 404)
 
 
+@app.errorhandler(405)
+def method_not_allowed(error) -> Response:
+    """
+    Error handler for 405 Method Not Allowed errors.
+    
+    Args:
+        error: The error that occurred.
+    
+    Returns:
+        A Flask response containing a JSON object with an error message.
+    """
+    return make_response(jsonify({'error': 'Method not allowed'}), 405)
+
+
 if __name__ == '__main__':
     """
     Run the Flask application.
