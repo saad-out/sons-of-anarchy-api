@@ -51,7 +51,7 @@ class Character(BaseModel, db.Model):
     image: Mapped[str] = db.Column(db.String(64))
 
     def __repr__(self):
-        return f'{self.fullName} ({self.age}) - {self.club}'
+        return f'{self.fullName} ({self.gender}) - {self.club}'
     
     def to_dict(self):
         """
