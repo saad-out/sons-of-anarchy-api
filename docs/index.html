@@ -53,8 +53,8 @@
         <div class="mobile-menu-closer"></div>
         <div class="content-menu">
             <div class="content-infos">
-                <div class="info"><b>Version:</b> 1.0.5</div>
-                <div class="info"><b>Last Updated:</b> 15th Sep, 2021</div>
+                <div class="info"><b>Version:</b> 1.0.0</div>
+                <div class="info"><b>Last Updated:</b> 3th Jun, 2023</div>
             </div>
             <ul>
                 <li class="scroll-to-link active" data-target="content-get-started">
@@ -110,7 +110,7 @@
                 <h2>get characters</h2>
                 <p>
                     To get all (or a range of) characters you need to make a GET call to the following url :<br>
-                    <code class="higlighted break-word">http://localhost:5000/api/v1/characters</code>
+                    <code class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/characters</code>
                 </p>
                 <br>
                 <h4>QUERY PARAMETERS</h4>
@@ -139,7 +139,7 @@
                 <h4>Example:</h4>
                 <p>
                     <code
-                        class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/characters?limit=2"</code>
+                        class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/characters?limit=2"</code>
                 </p>
                 <h4>Output:</h4>
                 <pre>
@@ -154,7 +154,7 @@
     "fullName": "Jackson Nathaniel \"Jax\" Teller",
     "gender": "Male",
     "id": 1,
-    "image": "localhost:5000/api/v1/images/jax.jpg",
+    "image": "https://sons-of-anrachy-api.onrender.com/api/v1/images/jax.jpg",
     "lastName": "Teller",
     "middleName": "Nathaniel",
     "occupation": "Outlaw biker",
@@ -173,7 +173,7 @@
     "fullName": "Gemma Teller Morrow",
     "gender": "Female",
     "id": 2,
-    "image": "localhost:5000/api/v1/images/gemma.jpg",
+    "image": "https://sons-of-anrachy-api.onrender.com/api/v1/images/gemma.jpg",
     "lastName": "Teller Morrow",
     "middleName": "",
     "occupation": "Family Matriarch",
@@ -193,14 +193,14 @@
                 <p>
                     To get a character you need to make a GET call to the following url with `id` as the character
                     ID:<br>
-                    <code class="higlighted break-word">http://localhost:5000/api/v1/characters/{int:id}</code>
+                    <code class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/characters/{int:id}</code>
                 </p>
                 <br>
                 <h4>QUERY PARAMETERS</h4>
                 <p><b>No query params for this endpoint.</b></p>
                 <h4>Example:</h4>
                 <p>
-                    <code class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/characters/10"</code>
+                    <code class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/characters/10"</code>
                 </p>
                 <h4>Output:</h4>
                 <pre><code>
@@ -213,7 +213,7 @@
   "fullName": "Piermont \"Piney\" Winston",
   "gender": "Male",
   "id": 10,
-  "image": "localhost:5000/api/v1/images/piney.jpg",
+  "image": "https://sons-of-anrachy-api.onrender.com/api/v1/images/piney.jpg",
   "lastName": "Winston",
   "middleName": "",
   "occupation": "Outlaw biker",
@@ -229,7 +229,7 @@
                 <h2>Get seasons</h2>
                 <p>
                     To get all (or a range of) seasons, you need to make a GET call to the following URL:<br>
-                    <code class="higlighted break-word">http://localhost:5000/api/v1/seasons</code>
+                    <code class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/seasons</code>
                 </p>
                 <br>
                 <h4>QUERY PARAMETERS</h4>
@@ -259,7 +259,7 @@
                 <h4>Example:</h4>
                 <p>
                     <code
-                        class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/seasons?offset=4&limit=2"</code>
+                        class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/seasons?offset=4&limit=2"</code>
                 </p>
                 <h4>Output:</h4>
                 <pre><code>
@@ -267,19 +267,19 @@
   {
     "endDate": "2012-12-04",
     "episodes": [
-      "localhost:5000/api/v1/episodes/54",
-      "localhost:5000/api/v1/episodes/55",
-      "localhost:5000/api/v1/episodes/56",
-      "localhost:5000/api/v1/episodes/57",
-      "localhost:5000/api/v1/episodes/58",
-      "localhost:5000/api/v1/episodes/59",
-      "localhost:5000/api/v1/episodes/60",
-      "localhost:5000/api/v1/episodes/61",
-      "localhost:5000/api/v1/episodes/62",
-      "localhost:5000/api/v1/episodes/63",
-      "localhost:5000/api/v1/episodes/64",
-      "localhost:5000/api/v1/episodes/65",
-      "localhost:5000/api/v1/episodes/66"
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/54",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/55",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/56",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/57",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/58",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/59",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/60",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/61",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/62",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/63",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/64",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/65",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/66"
     ],
     "id": 5,
     "numberOfEpisodes": 13,
@@ -291,19 +291,19 @@
   {
     "endDate": "2013-12-10",
     "episodes": [
-      "localhost:5000/api/v1/episodes/67",
-      "localhost:5000/api/v1/episodes/68",
-      "localhost:5000/api/v1/episodes/69",
-      "localhost:5000/api/v1/episodes/70",
-      "localhost:5000/api/v1/episodes/71",
-      "localhost:5000/api/v1/episodes/72",
-      "localhost:5000/api/v1/episodes/73",
-      "localhost:5000/api/v1/episodes/74",
-      "localhost:5000/api/v1/episodes/75",
-      "localhost:5000/api/v1/episodes/76",
-      "localhost:5000/api/v1/episodes/77",
-      "localhost:5000/api/v1/episodes/78",
-      "localhost:5000/api/v1/episodes/79"
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/67",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/68",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/69",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/70",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/71",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/72",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/73",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/74",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/75",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/76",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/77",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/78",
+      "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/79"
     ],
     "id": 6,
     "numberOfEpisodes": 13,
@@ -319,33 +319,33 @@
                 <h2>Get a single season</h2>
                 <p>
                     To get a season, you need to make a GET call to the following URL with `id` as the season ID:<br>
-                    <code class="higlighted break-word">http://localhost:5000/api/v1/seasons/{int:id}</code>
+                    <code class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/seasons/{int:id}</code>
                 </p>
                 <br>
                 <h4>QUERY PARAMETERS</h4>
                 <p><b>No query params for this endpoint.</b></p>
                 <h4>Example:</h4>
                 <p>
-                    <code class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/seasons/7"</code>
+                    <code class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/seasons/7"</code>
                 </p>
                 <h4>Output:</h4>
                 <pre><code>
 {
   "endDate": "2014-12-09",
   "episodes": [
-    "localhost:5000/api/v1/episodes/80",
-    "localhost:5000/api/v1/episodes/81",
-    "localhost:5000/api/v1/episodes/82",
-    "localhost:5000/api/v1/episodes/83",
-    "localhost:5000/api/v1/episodes/84",
-    "localhost:5000/api/v1/episodes/85",
-    "localhost:5000/api/v1/episodes/86",
-    "localhost:5000/api/v1/episodes/87",
-    "localhost:5000/api/v1/episodes/88",
-    "localhost:5000/api/v1/episodes/89",
-    "localhost:5000/api/v1/episodes/90",
-    "localhost:5000/api/v1/episodes/91",
-    "localhost:5000/api/v1/episodes/92"
+    "https://sons-of-anrachy-api.onrender.com/episodes/80",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/81",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/82",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/83",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/84",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/85",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/86",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/87",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/88",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/89",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/90",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/91",
+    "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/92"
   ],
   "id": 7,
   "numberOfEpisodes": 13,
@@ -361,7 +361,7 @@
                 <h2>Get episodes</h2>
                 <p>
                     To get all (or a range of) episodes, you need to make a GET call to the following URL:<br>
-                    <code class="higlighted break-word">http://localhost:5000/api/v1/episodes</code>
+                    <code class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/episodes</code>
                 </p>
                 <br>
                 <h4>QUERY PARAMETERS</h4>
@@ -391,7 +391,7 @@
                 <h4>Example:</h4>
                 <p>
                     <code
-                        class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/episodes?offset=90"</code>
+                        class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/episodes?offset=90"</code>
                 </p>
                 <h4>Output:</h4>
                 <pre><code>
@@ -403,7 +403,7 @@
     ],
     "episodeNumber": 12,
     "id": 91,
-    "season": "localhost:5000/api/v1/seasons/7",
+    "season": "https://sons-of-anrachy-api.onrender.com/api/v1/seasons/7",
     "seasonNumber": "S07",
     "synopsis": "In the explosive penultimate episode, SAMCRO faces the consequences of their actions as alliances crumble, friendships are tested, and loyalties are questioned. Jax must make the ultimate sacrifice to protect his family and secure the future of the club. Charming will never be the same again.",
     "title": "Red Rose",
@@ -419,7 +419,7 @@
     ],
     "episodeNumber": 13,
     "id": 92,
-    "season": "localhost:5000/api/v1/seasons/7",
+    "season": "https://sons-of-anrachy-api.onrender.com/api/v1/seasons/7",
     "seasonNumber": "S07",
     "synopsis": "In the gripping series finale, SAMCRO confronts the sins of the past as Jax seeks closure and redemption. The Sons of Anarchy face their ultimate fate as alliances are shattered, enemies close in, and the truth about Jax's father is finally revealed. Charming will never be the same again.",
     "title": "Papa's Goods",
@@ -435,14 +435,14 @@
                 <h2>Get a single episode</h2>
                 <p>
                     To get an episode, you need to make a GET call to the following URL with `id` as the episode ID:<br>
-                    <code class="higlighted break-word">http://localhost:5000/api/v1/episodes/{int:id}</code>
+                    <code class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/episodes/{int:id}</code>
                 </p>
                 <br>
                 <h4>QUERY PARAMETERS</h4>
                 <p><b>No query params for this endpoint.</b></p>
                 <h4>Example:</h4>
                 <p>
-                    <code class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/episodes/1"</code>
+                    <code class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/1"</code>
                 </p>
                 <h4>Output:</h4>
                 <pre><code>
@@ -454,7 +454,7 @@
   ],
   "episodeNumber": 1,
   "id": 1,
-  "season": "localhost:5000/api/v1/seasons/1",
+  "season": "https://sons-of-anrachy-api.onrender.com/api/v1/seasons/1",
   "seasonNumber": "S01",
   "synopsis": "In the small town of Charming, the Sons of Anarchy Motorcycle Club Redwood Original (SAMCRO) is led by President Clay Morrow. Jax Teller, the vice president of the club and son of the founder, struggles with his loyalty to the club and his growing disillusionment with its illegal activities. When a rival gang threatens SAMCRO's gun-running operation, tensions rise, and Jax finds himself torn between his family's legacy and his desire for a better life.",
   "title": "Pilot",
@@ -470,7 +470,7 @@
                 <p>
                     To get all episodes of a specific season, you need to make a GET call to the following URL:<br>
                     <code
-                        class="higlighted break-word">http://localhost:5000/api/v1/seasons/{int:season_id}/episodes</code>
+                        class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/seasons/{int:season_id}/episodes</code>
                 </p>
                 <p>
                     Replace <code>{int:season_id}</code> with the desired season ID.
@@ -481,7 +481,7 @@
                 <h4>Example:</h4>
                 <p>
                     <code
-                        class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/seasons/3/episodes"</code>
+                        class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/seasons/3/episodes"</code>
                 </p>
                 <h4>Output:</h4>
                 <pre><code>
@@ -493,7 +493,7 @@
     ],
     "episodeNumber": 1,
     "id": 40,
-    "season": "localhost:5000/api/v1/seasons/4",
+    "season": "https://sons-of-anrachy-api.onrender.com/api/v1/seasons/4",
     "seasonNumber": "S04",
     "synopsis": "Following the events of the previous season, SAMCRO faces the fallout of their actions as they try to rebuild their club and establish new alliances. Jax takes on a leadership role with the club, while Clay struggles to maintain his influence. The tension between the members escalates as they navigate a world filled with danger and uncertainty.",
     "title": "Out",
@@ -508,7 +508,7 @@
     ],
     "episodeNumber": 2,
     "id": 41,
-    "season": "localhost:5000/api/v1/seasons/4",
+    "season": "https://sons-of-anrachy-api.onrender.com/api/v1/seasons/4",
     "seasonNumber": "S04",
     "synopsis": "SAMCRO continues to face challenges as they work to solidify their position in the criminal underworld. Jax grapples with the direction of the club, while Clay takes desperate measures to protect his legacy. Loyalties are tested, alliances are formed, and the club must navigate treacherous waters to survive.",
     "title": "Booster",
@@ -527,7 +527,7 @@
                 <p>
                     To get an episode from a specific season, you need to make a GET call to the following URL:<br>
                     <code
-                        class="higlighted break-word">http://localhost:5000/api/v1/seasons/{int:season_id}/episodes/{int:episode_id}</code>
+                        class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/seasons/{int:season_id}/episodes/{int:episode_id}</code>
                 </p>
                 <p>
                     Replace <code>{int:season_id}</code> with the desired season ID and <code>{int:episode_id}</code>
@@ -539,7 +539,7 @@
                 <h4>Example:</h4>
                 <p>
                     <code
-                        class="higlighted break-word">curl -X GET "http://localhost:5000/api/v1/seasons/3/episodes/27"</code>
+                        class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/seasons/3/episodes/27"</code>
                 </p>
                 <h4>Output:</h4>
                 <pre><code>
@@ -550,7 +550,7 @@
   ],
   "episodeNumber": 1,
   "id": 27,
-  "season": "localhost:5000/api/v1/seasons/3",
+  "season": "https://sons-of-anrachy-api.onrender.com/api/v1/seasons/3",
   "seasonNumber": "S03",
   "synopsis": "After the events of the season finale, SAMCRO finds themselves in a new environment as they relocate to a different town. Jax grapples with the consequences of his actions, while Clay tries to maintain control of the club. Tensions rise as the club clashes with a powerful new adversary.",
   "title": "SO",
