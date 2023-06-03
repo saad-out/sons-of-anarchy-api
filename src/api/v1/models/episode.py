@@ -27,6 +27,10 @@ from api.v1.models.base_model import BaseModel
 
 from sqlalchemy.orm import Mapped
 from datetime import datetime
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class Episode(BaseModel, db.Model):
@@ -34,6 +38,8 @@ class Episode(BaseModel, db.Model):
     Represents a TV episode.
     """
     __tablename__ = 'episodes'
+
+    APP_URL = getenv('APP_URL', 'http://localhost:5000')
 
     id: Mapped[int] = db.Column(db.Integer, primary_key=True, autoincrement=True)
     seasonNumber: Mapped[str] = db.Column(db.String(64), db.ForeignKey('seasons.seasonOrder'), nullable=False)
@@ -63,5 +69,5 @@ class Episode(BaseModel, db.Model):
             'airDate': self.airDate.strftime("%Y-%m-%d"),
             'writtenBy': self.writtenBy,
             'directedBy': self.directedBy,
-            'season': "localhost:5000/api/v1/seasons/{}".format(self.season.id)
+            'season': "{}/api/v1/seasons/{}".format(self.APP_URL, self.season.id)
         }
