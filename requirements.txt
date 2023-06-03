@@ -20,7 +20,6 @@ packaging==23.1
 psycopg2-binary==2.9.6
 pycparser==2.21
 PyJWT==2.7.0
-PyMySQL==1.0.3
 pyrsistent==0.19.3
 python-dotenv==1.0.0
 PyYAML==6.0
