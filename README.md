@@ -1,7 +1,7 @@
 # <p align="center">The Sons Of Anarchy TV Show RESTful API</p>
 
 <p align="center">
-  <img src="https://github.com/saad-out/sons-of-anarchy-api/blob/main/docs/images/soa_no_bg.png" style="height: 300px; width:1200px;"/>
+  <img src="https://github.com/saad-out/sons-of-anarchy-api/blob/main/docs/images/soa_no_bg.png" style="width:1200px;"/>
 </p>
 
 # Project Description
@@ -9,7 +9,7 @@
 Welcome to the Sons of Anarchy API! This project presents a robust and user-friendly RESTful API built on Flask, a powerful Python web framework. It serves as a comprehensive data hub for accessing character, season, and episode information from the iconic TV show Sons of Anarchy. This API offers a seamless way to retrieve data related to the show's characters, seasons, and episodes. Whether you're a fan looking to explore the gritty world of SAMCRO or a developer seeking a reliable data source for Sons of Anarchy, our API offers a straightforward solution. With carefully designed endpoints and well-structured responses, integrating Sons of Anarchy data into your applications, websites, or projects becomes easy.
 
 <p align="center">
-  <img src="https://github.com/saad-out/sons-of-anarchy-api/blob/main/docs/images/api_response.png" style="height: 440px; width:1200px;"/>
+  <img src="https://github.com/saad-out/sons-of-anarchy-api/blob/main/docs/images/api_response.png" style="width:1200px;"/>
 </p>
 
 # How It Works
