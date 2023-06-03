@@ -63,7 +63,7 @@ class Character(BaseModel, db.Model):
         """
         Return a dictionary representation of the character instance.
         """
-        IMAGE_URL_PREFIX = '{URL}/api/v1/images/{image}'
+        IMAGE_URL_PREFIX = '{url}/api/v1/images/{image}'
         return {
             'id': self.id,
             'firstName': self.firstName,
