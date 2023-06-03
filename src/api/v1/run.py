@@ -80,6 +80,6 @@ if __name__ == '__main__':
     """
     Run the Flask application.
     """
-    app.run(host=getenv('APP_HOST', 'localhost'),
+    app.run(host=getenv('APP_HOST', '0.0.0.0'),
             port=int(getenv('APP_PORT', 5000)),
             debug=bool(getenv('DEBUG', False)))
