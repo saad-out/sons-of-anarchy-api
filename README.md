@@ -184,17 +184,23 @@ These technologies work together to create a reliable, efficient, and secure API
 
 # Installation
 
+**Prerequisites: Ensure that you have [Python](https://www.python.org/downloads/) and [PostgreSQL](https://www.postgresql.org/download/) installed on your machine.**
+
 To run the Sons of Anarchy Flask API locally for testing or other purposes, follow the steps below:
 
 1- Clone the repository:
 ```
 git clone https://github.com/saad-out/sons-of-anarchy-api.git
 ```
-2- Ensure that you have Python and PostgreSQL installed on your machine.
-
-3- cd into the repository:
+2- Change your directory into the repository:
 ```
 cd sons-of-anarchy-api/
+```
+3- Create and activate a virtual environment (optional but recommended):
+```
+python -m venv myenv      # Create a virtual environment  (or python3 -m venv myenv)
+source myenv/bin/activate    # Activate the virtual environment (Linux/Mac)
+myenv\Scripts\activate       # Activate the virtual environment (Windows)
 ```
 4- Install the required dependencies bt running the following command from the root of the project:
 ```
