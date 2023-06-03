@@ -253,4 +253,6 @@ We value your input and are always ready to assist you. Don't hesitate to get in
 
 The Sons of Anarchy Flask API is released under the MIT License. This license allows you to use, modify, and distribute the code for both commercial and non-commercial purposes. It grants you the freedom to adapt the API to your specific needs while providing the flexibility to incorporate it into your projects without restrictions.
 
+For more details, please refer to the LICENSE file in the repository.
+
 **Note: The API's data, including characters, seasons, and episodes, belongs to the respective creators and rights holders of the Sons of Anarchy TV show. The API itself is an independent project created for informational and educational purposes.** 
