@@ -29,6 +29,10 @@ from api.v1.models.base_model import BaseModel
 
 from sqlalchemy.ext.mutable import MutableList
 from sqlalchemy.orm import Mapped
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class Character(BaseModel, db.Model):
@@ -36,6 +40,8 @@ class Character(BaseModel, db.Model):
     Represents a character in the TV show SOA.
     """
     __tablename__ = 'characters'
+
+    APP_URL = getenv('APP_URL', 'http://localhost:5000')
 
     id: Mapped[int] = db.Column(db.Integer, primary_key=True, autoincrement=True)
     firstName: Mapped[str] = db.Column(db.String(64), nullable=False)
@@ -57,7 +63,7 @@ class Character(BaseModel, db.Model):
         """
         Return a dictionary representation of the character instance.
         """
-        IMAGE_URL_PREFIX = 'localhost:5000/api/v1/images/{image}'
+        IMAGE_URL_PREFIX = '{URL}/api/v1/images/{image}'
         return {
             'id': self.id,
             'firstName': self.firstName,
@@ -70,5 +76,5 @@ class Character(BaseModel, db.Model):
             'titles': self.titles,
             'aliases': self.aliases,
             'playedBy': self.playedBy,
-            'image': IMAGE_URL_PREFIX.format(image=self.image),
+            'image': IMAGE_URL_PREFIX.format(url=self.APP_URL, image=self.image),
         }
