@@ -129,7 +129,7 @@ The output of the above code will be:
 ]
 ```
 
-Please note that the Sons of Anarchy API V1 returns data in JSON format, while character images are provided in PNG format.
+Please note that the Sons of Anarchy API V1 returns data in JSON format, while character images are provided in JPG format.
 
 Feel free to adjust and modify the examples to fit your project's requirements and utilize the API's functionality effectively.
 
