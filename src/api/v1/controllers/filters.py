@@ -24,6 +24,8 @@ from api.v1.models.episode import Episode
 TYPES: Dict = {"characters": Character, "seasons": Season, "episodes": Episode}
 BASE_COLUMNS: Tuple = ("recordId", "createdAt", "updatedAt")
 REQUIRED_FIELDS: Tuple = ("type", "filters")
+ARRAY_COLUMNS: Tuple = ("writtenBy", "directedBy",
+                        "playedBy","titles", "aliases")
 
 
 def filter_type_by_attributes() -> Response:
@@ -47,9 +49,14 @@ def filter_type_by_attributes() -> Response:
         return make_response(jsonify({"error": "Invalid filters"}), 400)
 
     query = db.session.query(TYPES[data["type"]])
-    for colum, value in data["filters"].items():
-        if colum not in TYPES[data["type"]].__table__.columns:
+    for column, value in data["filters"].items():
+        if column not in TYPES[data["type"]].__table__.columns:
             return make_response(jsonify({"error": "Invalid filters"}), 400)
-        query = query.filter_by(**{colum: value})
+        if column in BASE_COLUMNS:
+            continue
+        if column in ARRAY_COLUMNS and not isinstance(value, list):
+            query = query.filter(getattr(TYPES[data["type"]], column).any(value))
+            continue
+        query = query.filter_by(**{column: value})
 
     return make_response(jsonify([record.to_dict() for record in query.all()]), 200)
