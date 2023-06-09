@@ -51,9 +51,9 @@ class Character(BaseModel, db.Model):
     gender: Mapped[str] = db.Column(db.String(16), nullable=False)
     club: Mapped[str] = db.Column(db.String(64), nullable=False)
     occupation: Mapped[str] = db.Column(db.String(64), nullable=False)
-    titles: Mapped[list[str]] = db.Column(db.JSON)
-    aliases: Mapped[list[str]] = db.Column(db.JSON)
-    playedBy: Mapped[list[str]] = db.Column(db.JSON, nullable=False)
+    titles: Mapped[list[str]] = db.Column(db.ARRAY(db.String(64)))
+    aliases: Mapped[list[str]] = db.Column(db.ARRAY(db.String(64)))
+    playedBy: Mapped[list[str]] = db.Column(db.ARRAY(db.String(64)), nullable=False)
     image: Mapped[str] = db.Column(db.String(64))
 
     def __repr__(self):

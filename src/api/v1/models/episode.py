@@ -47,8 +47,8 @@ class Episode(BaseModel, db.Model):
     title: Mapped[str] = db.Column(db.String(64), nullable=False)
     synopsis: Mapped[str] = db.Column(db.Text, nullable=False)
     airDate: Mapped[datetime] = db.Column(db.DateTime, nullable=False)
-    writtenBy: Mapped[list[str]] = db.Column(db.JSON, nullable=False)
-    directedBy: Mapped[list[str]] = db.Column(db.JSON, nullable=False)
+    writtenBy: Mapped[list[str]] = db.Column(db.ARRAY(db.String(64)), nullable=False)
+    directedBy: Mapped[list[str]] = db.Column(db.ARRAY(db.String(64)), nullable=False)
 
     def __repr__(self):
         return f'Episode {self.episodeNumber} from season {self.seasonNumber}'
