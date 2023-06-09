@@ -52,7 +52,7 @@ class Season(BaseModel, db.Model):
     endDate: Mapped[datetime] = db.Column(db.DateTime, nullable=False)
     synopsis: Mapped[str] = db.Column(db.Text, nullable=False)
     numberOfEpisodes: Mapped[int] = db.Column(db.Integer, nullable=False)
-    viewership: Mapped[int] = db.Column(db.Float(precision=2), nullable=False)
+    viewership: Mapped[int] = db.Column(db.Numeric(4, 2), nullable=False)
 
     episodes: Mapped[list[Episode]] = db.relationship('Episode', backref='season', lazy=True)
 
