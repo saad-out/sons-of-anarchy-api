@@ -11,7 +11,7 @@ load_dotenv()
 POSTGRES_HOST = os.environ.get('POSTGRES_HOST', '')
 POSTGRES_USER = os.environ.get('POSTGRES_USER', '')
 POSTGRES_USER_PASSWORD = os.environ.get('POSTGRES_USER_PASSWORD', '')
-POSTGRES_DB = os.environ.get('POSTGRES_DATABASE', '')
+POSTGRES_DB = os.environ.get('POSTGRES_DB', '')
 
 
 class Config:
