@@ -76,6 +76,20 @@ def method_not_allowed(error) -> Response:
     return make_response(jsonify({'error': 'Method not allowed'}), 405)
 
 
+@app.errorhandler(500)
+def internal_server_error(error) -> Response:
+    """
+    Error handler for 500 Internal Server Error errors.
+    
+    Args:
+        error: The error that occurred.
+    
+    Returns:
+        A Flask response containing a JSON object with an error message.
+    """
+    return make_response(jsonify({'error': 'Internal server error'}), 500)
+
+
 if __name__ == '__main__':
     """
     Run the Flask application.
