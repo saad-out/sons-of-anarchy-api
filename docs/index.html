@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>API - Documentation</title>
+    <title>SOA API - Documentation</title>
     <meta name="description" content="">
     <meta name="author" content="ticlekiwi">
 
@@ -59,7 +59,7 @@
         <div class="content-menu">
             <div class="content-infos">
                 <div class="info"><b>Version:</b> 1.0.0</div>
-                <div class="info"><b>Last Updated:</b> 3th Jun, 2023</div>
+                <div class="info"><b>Last Updated:</b> 10th Jun, 2023</div>
             </div>
             <ul>
                 <li class="scroll-to-link active" data-target="content-get-started">
@@ -88,6 +88,9 @@
                 </li>
                 <li class="scroll-to-link" data-target="content-get-episode-for-season">
                     <a>Get A Single Season Episode</a>
+                </li>
+                <li class="scroll-to-link" data-target="content-filter">
+                    <a>Filter Resources</a>
                 </li>
                 <li class="scroll-to-link" data-target="content-errors">
                     <a>Errors</a>
@@ -118,7 +121,8 @@
                 <h2>get characters</h2>
                 <p>
                     To get all (or a range of) characters you need to make a GET call to the following url :<br>
-                    <code class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/characters</code>
+                    <code
+                        class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/characters</code>
                 </p>
                 <br>
                 <h4>QUERY PARAMETERS</h4>
@@ -201,14 +205,16 @@
                 <p>
                     To get a character you need to make a GET call to the following url with `id` as the character
                     ID:<br>
-                    <code class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/characters/{int:id}</code>
+                    <code
+                        class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/characters/{int:id}</code>
                 </p>
                 <br>
                 <h4>QUERY PARAMETERS</h4>
                 <p><b>No query params for this endpoint.</b></p>
                 <h4>Example:</h4>
                 <p>
-                    <code class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/characters/10"</code>
+                    <code
+                        class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/characters/10"</code>
                 </p>
                 <h4>Output:</h4>
                 <pre><code>
@@ -327,14 +333,16 @@
                 <h2>Get a single season</h2>
                 <p>
                     To get a season, you need to make a GET call to the following URL with `id` as the season ID:<br>
-                    <code class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/seasons/{int:id}</code>
+                    <code
+                        class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/seasons/{int:id}</code>
                 </p>
                 <br>
                 <h4>QUERY PARAMETERS</h4>
                 <p><b>No query params for this endpoint.</b></p>
                 <h4>Example:</h4>
                 <p>
-                    <code class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/seasons/7"</code>
+                    <code
+                        class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/seasons/7"</code>
                 </p>
                 <h4>Output:</h4>
                 <pre><code>
@@ -443,14 +451,16 @@
                 <h2>Get a single episode</h2>
                 <p>
                     To get an episode, you need to make a GET call to the following URL with `id` as the episode ID:<br>
-                    <code class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/episodes/{int:id}</code>
+                    <code
+                        class="higlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/episodes/{int:id}</code>
                 </p>
                 <br>
                 <h4>QUERY PARAMETERS</h4>
                 <p><b>No query params for this endpoint.</b></p>
                 <h4>Example:</h4>
                 <p>
-                    <code class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/1"</code>
+                    <code
+                        class="higlighted break-word">curl -X GET "https://sons-of-anrachy-api.onrender.com/api/v1/episodes/1"</code>
                 </p>
                 <h4>Output:</h4>
                 <pre><code>
@@ -569,6 +579,122 @@
                 </code></pre>
             </div>
 
+            <div class="overflow-hidden content-section" id="content-filter">
+                <h2>Filter Resources</h2>
+                <p>
+                    To filter resources based on specific criteria, you need to make a POST call to the following
+                    endpoint:
+                    <br>
+                    <code class="highlighted break-word">https://sons-of-anrachy-api.onrender.com/api/v1/filter</code>
+                </p>
+                <br>
+                <h4>QUERY PARAMETERS</h4>
+                <p><b>No query params for this endpoint.</b></p>
+                <h4>Request Body:</h4>
+                <pre>
+        <code>
+{
+    "type": "type of resource to filter",
+    "filters": {
+        "attribute1": "value1",
+        "attribute2": "value2",
+        ...
+    }
+}</code>
+    </pre>
+                <p>
+                    The request body should contain the following fields:
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>type</td>
+                            <td>String</td>
+                            <td>Specifies the resource type to filter. Valid options: "characters", "episodes",
+                                "seasons".
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>filters</td>
+                            <td>Object</td>
+                            <td>Contains the attribute-value pairs for filtering the resources based on specific
+                                criteria.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <h4>Example:</h4>
+                <p>
+                    <code class="highlighted break-word">
+                        curl -X POST "https://sons-of-anrachy-api.onrender.com/api/v1/filter" -H "Content-Type: application/json" -d '{"type": "characters", "filters": {"firstName": "Jax"}}'
+        </code>
+                </p>
+                <h4>Response:</h4>
+                <pre>
+        <code>[
+  {
+    "aliases": [
+      "J.T.",
+      "John Teller"
+    ],
+    "club": "Sons of Anarchy Motorcycle Club, Redwood Original (SAMCRO)",
+    "firstName": "Jax",
+    "fullName": "Jackson Nathaniel \"Jax\" Teller",
+    "gender": "Male",
+    "id": 1,
+    "image": "https://sons-of-anrachy-api.onrender.com/api/v1/images/jax.jpg",
+    "lastName": "Teller",
+    "middleName": "Nathaniel",
+    "occupation": "Outlaw biker",
+    "playedBy": [
+      "Charlie Hunnam"
+    ],
+    "titles": [
+      "Vice President",
+      "President"
+    ]
+  }
+]
+        </code>
+    </pre>
+                <h4>Filtering List Columns</h4>
+                <p>
+                    When querying list columns, such as those defined with a list of
+                    strings, the
+                    filtering behavior differs depending on how the value is specified:
+                </p>
+                <ul>
+                    <li style="color: #fff;">
+                        If you specify a key-value pair, it will return the object if the key contains the specified
+                        value within the
+                        list. For example, if an object has <code style="color: bisque;"> writtenBy=["Kurt Sutter", "Jack LoGiudice"]</code>,
+                        filtering by
+                        <code style="color: bisque;">"writtenBy": "Kurt Sutter"</code> will return the object.
+                    </li>
+                    <li style="color: #fff;">
+                        However, if you specify the value as a list, it will be compared literally. Using the same
+                        example, filtering by
+                        <code style="color: bisque;">"writtenBy": ["Kurt Sutter"]</code> will not return the object because the comparison is
+                        performed on the
+                        entire list.
+                    </li>
+                </ul>
+                <h4>Filtering By Images</h4>
+                <p>
+                    When filtering by images, you ONLY need to specify the image name. For example, filtering by
+                    <code style="color: bisque;">"image": "jax.jpg"</code> will return the object. However, filtering by
+                    <code style="color: bisque;">"image": "https://sons-of-anrachy-api.onrender.com/api/v1/images/jax.jpg"</code> will not return the object.
+                </p>
+
+            </div>
+
 
 
             <div class="overflow-hidden content-section" id="content-errors">
@@ -593,6 +719,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>401</td>
+                            <td>Depends on the request.</td>
+                            <td>
+                                Unauthorized (lacks valid JWT authentication).
+                            </td>
+                        </tr>
+                        <tr>
                             <td>404</td>
                             <td>{'error': 'Not found'}</td>
                             <td>
@@ -602,10 +735,19 @@
                         <tr>
                             <td>405</td>
                             <td>
-                               {'error': 'Method not allowed'} 
+                                {'error': 'Method not allowed'}
                             </td>
                             <td>
                                 The requested method is not allowed.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>500</td>
+                            <td>
+                                {'error': 'Internal Server Error'}
+                            </td>
+                            <td>
+                                An error occurred on the server side.
                             </td>
                         </tr>
                     </tbody>
@@ -614,9 +756,8 @@
         </div>
     </div>
     <!-- Github Corner Ribbon - to remove (Ribbon created with : http://tholman.com/github-corners/ )-->
-    <a href="https://github.com/saad-out/sons-of-anarchy-api" class="github-corner"
-        aria-label="View source on Github" title="View source on Github"><svg width="80" height="80"
-            viewBox="0 0 250 250"
+    <a href="https://github.com/saad-out/sons-of-anarchy-api" class="github-corner" aria-label="View source on Github"
+        title="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250"
             style="z-index:99999; fill:#70B7FD; color:#fff; position: fixed; top: 0; border: 0; right: 0;"
             aria-hidden="true">
             <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
