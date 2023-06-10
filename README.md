@@ -14,9 +14,9 @@ Welcome to the Sons of Anarchy API! This project presents a robust and user-frie
 
 # How It Works
 
-**NOTE: For detailed documentation on each API endpoint, please refer to https://saad-out.github.io/sons-of-anarchy-api/.**
+**NOTE: For detailed documentation on each API endpoint, please refer to the [Official API Docs](https://saad-out.github.io/sons-of-anarchy-api/).**
 
-The Sons of Anarchy API is currently in `version 1`, with all endpoints prefixed by `api/v1/`. The available endpoints include `characters/`, `seasons/`, and `episodes/`. You can access data for all characters, seasons, or episodes, or specify a specific item by appending its ID to the endpoint.
+The Sons of Anarchy API is currently in `version 1`, with all endpoints prefixed by `api/v1/`. The available endpoints include `characters/`, `seasons/`, `episodes/`, and `filter/`. You can access data for all characters, seasons, or episodes, or specify a specific item by appending its ID to the endpoint. Additionally, you can use the `/filter` endpoint to query data based on specific criteria.
 
 ## Python Example: Fetching Character Data
 To retrieve information about a specific character, such as "Jax Teller" with an ID of 1, you can use the `requests` module in Python:
@@ -79,6 +79,27 @@ The above code fetches season 7 and receives the following JSON response:
     "viewership": 4.6
 }
 ```
+
+## JavaScript Example: Filtering Data
+To filter data based on specific criteria, such as searching for characters with the first name "Jax", you can use the fetch function in JavaScript:
+```
+fetch('https://sons-of-anrachy-api.onrender.com/api/v1/filter', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "type": "characters",
+    "filters": {
+      "firstName": "Jax"
+    }
+  })
+})
+  .then(response => response.json())
+  .then(filteredData => console.log(filteredData));
+```
+The above code filters characters based on the specified criteria and receives the filtered data in JSON format as a **LIST**.
+
 In addition, the API supports pagination using the `offset` and `limit` query parameters. This allows you to control the number of results returned and start the search at a specific offset. By specifying the limit, you can limit the number of items per page, while the offset determines the starting point of the results.
 
 For example, to retrieve episodes with a limit of 2 and starting from offset 10, you can use the following endpoint: `episodes?limit=2&offset=10`.
@@ -184,7 +205,7 @@ These technologies work together to create a reliable, efficient, and secure API
 
 # Installation
 
-**Prerequisites: Ensure that you have [Python](https://www.python.org/downloads/) and [PostgreSQL](https://www.postgresql.org/download/) installed on your machine.**
+**Prerequisites: Ensure that you have [Python](https://www.python.org/downloads/) and [PostgreSQL](https://www.postgresql.org/download/) installed on your machine. Additionally, you will need to [create a PostgreSQL database](https://www.postgresql.org/docs/current/sql-createdatabase.html) and [user](https://www.postgresql.org/docs/8.0/sql-createuser.html) with [all privileges](https://www.postgresql.org/docs/current/sql-grant.html) for the new user on the new database.**
 
 To run the Sons of Anarchy Flask API locally for testing or other purposes, follow the steps below:
 
@@ -208,7 +229,7 @@ pip install -r requirements.txt
 ```
 5- Create a `.env` file at the root of the project and define the following environment variables:
 ```
-SECRET_KEY={your_app_secret_key_here}
+SECRET_KEY={your app secret key here}
 
 APP_HOST={your app host here}                             # Defaults to 0.0.0.0
 APP_PORT={your app port here}                             # Defaults to 5000
@@ -241,7 +262,7 @@ For detailed documentation on the Sons of Anarchy Flask API, please refer to the
 
 Contributions to the Sons of Anarchy Flask API project are highly welcomed and appreciated. While there are no predefined guidelines for contributing at the moment, you can still actively participate in improving the project. If you have any ideas, suggestions, or bug reports, please feel free to open an issue on the GitHub repository. Alternatively, you can reach out with your thoughts and contributions through social media channels mentioned below. Your feedback and contributions will help enhance the API and provide a better experience for all users.
 
-# Contact Information:
+# Contact Information
 This project was made possible thanks to the following contributors:
 
 [Saad Out](https://github.com/saad-out)
@@ -254,7 +275,7 @@ Twitter: [@saadout1](https://twitter.com/saadout1)
 
 We value your input and are always ready to assist you. Don't hesitate to get in touch with us for any inquiries or contributions related to the API.
 
-# License:
+# License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 The Sons of Anarchy Flask API is released under the MIT License. This license allows you to use, modify, and distribute the code for both commercial and non-commercial purposes. It grants you the freedom to adapt the API to your specific needs while providing the flexibility to incorporate it into your projects without restrictions.
