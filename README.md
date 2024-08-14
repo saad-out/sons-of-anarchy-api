@@ -20,7 +20,7 @@ The Sons of Anarchy API is currently in `version 1`, with all endpoints prefixed
 
 ## Python Example: Fetching Character Data
 To retrieve information about a specific character, such as "Jax Teller" with an ID of 1, you can use the `requests` module in Python:
-```
+```python
 import requests
 
 response = requests.get('https://sons-of-anrachy-api.onrender.com/api/v1/characters/1')
@@ -29,7 +29,7 @@ character_data = response.json()
 print(character_data)
 ```
 The above code fetches the character with ID 1 and receives the following JSON response:
-```
+```python
 {
     "aliases": ["J.T.", "John Teller"],
     "club": "Sons of Anarchy Motorcycle Club, Redwood Original (SAMCRO)",
@@ -47,13 +47,13 @@ The above code fetches the character with ID 1 and receives the following JSON r
 ```
 ## JavaScript Example: Fetching Season Data
 To retrieve information about a specific season, such as the 7th season, you can use the `fetch` function in JavaScript:
-```
+```javascript
 fetch('https://sons-of-anrachy-api.onrender.com/api/v1/seasons/7')
   .then(response => response.json())
   .then(seasonData => console.log(seasonData));
 ```
 The above code fetches season 7 and receives the following JSON response:
-```
+```javascript
 {
     "endDate": "2014-12-09",
     "episodes": [
@@ -82,7 +82,7 @@ The above code fetches season 7 and receives the following JSON response:
 
 ## JavaScript Example: Filtering Data
 To filter data based on specific criteria, such as searching for characters with the first name "Jax", you can use the fetch function in JavaScript:
-```
+```javascript
 fetch('https://sons-of-anrachy-api.onrender.com/api/v1/filter', {
   method: 'POST',
   headers: {
@@ -105,7 +105,7 @@ In addition, the API supports pagination using the `offset` and `limit` query pa
 For example, to retrieve episodes with a limit of 2 and starting from offset 10, you can use the following endpoint: `episodes?limit=2&offset=10`.
 
 Here's an example Python code snippet demonstrating the usage of the above endpoint:
-```
+```python
 import requests
 
 response = requests.get('https://sons-of-anrachy-api.onrender.com/api/v1/episodes?limit=2&offset=10')
@@ -114,7 +114,7 @@ data = response.json()
 print(data)
 ```
 The output of the above code will be:
-```
+```python
 [
   {
     "airDate": "2008-11-12",
